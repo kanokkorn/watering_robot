@@ -4,18 +4,19 @@ Main objective:
  * Palm tree analysis
  * Loadcell
  * Soil Measurement
+ 
 Watering
 ---
  awaits for explain
  
- Palm tree analysis
+Palm tree analysis
 ---
  awaits for explain
  
- Loadcell
+Loadcell
 ---
  awaits for explain
  
- Soil Measurement
+Soil Measurement
 ---
  awaits for explain
