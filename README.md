@@ -1,10 +1,9 @@
 # Watering_robot
-===
-Main objective
- *Watering
- *Palm tree analysis
- *Loadcell
- *Soil Measurement
+Main objective:
+ * Watering
+ * Palm tree analysis
+ * Loadcell
+ * Soil Measurement
 Watering
 ---
  awaits for explain
