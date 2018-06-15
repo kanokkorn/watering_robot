@@ -7,11 +7,11 @@ Main objective:
  
 Watering
 ---
- awaits for explain
+Autonomous robot follow gps plan 
  
 Palm tree analysis
 ---
- awaits for explain
+ Analysis using computer vision and machine learning
  
 Loadcell
 ---
