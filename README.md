@@ -15,7 +15,7 @@ Palm tree analysis
  
 Loadcell
 ---
- awaits for explain
+ simple loadcell
  
 Soil Measurement
 ---
