@@ -19,4 +19,4 @@ Loadcell
  
 Soil Measurement
 ---
- awaits for explain
+ simple soil measurement
