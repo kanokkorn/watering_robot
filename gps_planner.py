@@ -4,7 +4,11 @@ import math
 
 #get lat lon from Ublox neo m6 via UART
 def haversine(lat, lon):
-    
+    lat_int =
+    lon_int =
+    lat_fin =
+    lon_fin =
+
     return
     
 def Deg_Rad(deg):
