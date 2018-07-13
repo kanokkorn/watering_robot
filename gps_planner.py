@@ -13,6 +13,7 @@ def haversine(lat, lon):
     
 def Deg_Rad(deg):
     rad = math.radians(deg)
+    
     return rad
     
     
