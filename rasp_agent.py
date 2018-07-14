@@ -17,7 +17,7 @@ def action(act):
     if  (lat_int != lat_fin) && (lon_int != lon_fin) :
         print("Agent is moving")
         if () :
-        ser.write("Forward")
+        ser.write("")
     
  
     
