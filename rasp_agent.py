@@ -16,8 +16,12 @@ def action(act):
         pass
     if  (lat_int != lat_fin) && (lon_int != lon_fin) :
         print("Agent is moving")
-        if () :
-        ser.write("")
+        ser.write("Forward")
+        time.sleep(3)
+        pass
+    
+def main(self, lines, act):
+    
     
  
     

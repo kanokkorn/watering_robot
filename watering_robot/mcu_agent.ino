@@ -1,7 +1,7 @@
 
 String state;
 int Pin_F_R = 9;
-int Pin_B_R = 10;// LED connected to digital pin 9
+int Pin_B_R = 10;
 int Pin_F_L = 11;
 int Pin_B_L = 12;
 int Pin_WR  = 13;

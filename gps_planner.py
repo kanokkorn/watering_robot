@@ -3,7 +3,7 @@ import sys, os
 import math
 
 #get lat lon from Ublox neo m6 via UART
-def haversine(lat, lon):
+def haversine(lines):
     lat_int =
     lon_int =
     lat_fin =
