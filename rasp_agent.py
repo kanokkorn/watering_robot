@@ -8,7 +8,7 @@ def read_loc(lines):
     with open('lat_lon.csv') as f:
         lines = f.readlines()
     return(lines)
-def action(act):
+def action(lat_int, lat_fin, lon_int, lon_fin):
     if (lat_int == lat_fin) & (lon_int == lon_fin) :
         print("Agent is Watering")
         ser.write("Stop")
@@ -22,8 +22,7 @@ def action(act):
     
 def main(self, lines, act):
     pass
-    
-    
+action()
     
  
     
