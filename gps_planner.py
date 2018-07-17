@@ -11,7 +11,7 @@ def haversine(lines):
 
 
 
-    return (lat_int, lat_fin, lon_int, lon_fin)
+    return lat_int, lat_fin, lon_int, lon_fin
     
 def Deg_Rad(deg):
     rad = math.radians(deg)
