@@ -21,7 +21,7 @@ def action(lat_int, lat_fin, lon_int, lon_fin):
         pass
     
 def main(self, lines, act):
-    haversine()
+    haversine(lines)
     action()
 
     pass
