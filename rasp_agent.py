@@ -20,12 +20,17 @@ def action(lat_int, lat_fin, lon_int, lon_fin):
         time.sleep(3)
         pass
     
-def main(self, lines, act):
-    haversine(lines)
-    action()
+def main(lines, action):
+        haversine(lines)
+        action()
 
-    pass
+        pass
+while 1:
+    main(line)
     
+    
+    
+
  
     
     
