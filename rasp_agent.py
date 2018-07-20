@@ -26,7 +26,7 @@ def main(lines, action):
 
         pass
 while 1:
-    main(line)
+    main(lines)
     
     
     
