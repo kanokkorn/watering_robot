@@ -8,8 +8,8 @@ def read_loc(lines):
     return(lines)
 def haversine(lines):
     
-    lat_int = 
-    lon_int = 
+    lat_int = 1
+    lon_int = 0
     lat_fin = 1
     lon_fin = 0
 
