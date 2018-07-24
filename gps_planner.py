@@ -5,15 +5,11 @@ import math
 def read_loc(lines):
     with open('lat_lon.csv') as f:
         lines = f.readlines()
+        
     return(lines)
 def haversine(lines):
     
-    lat_int = 1
-    lon_int = 0
-    lat_fin = 1
-    lon_fin = 0
-
-    return lat_int, lat_fin, lon_int, lon_fin
+    
     
 def Deg_Rad(deg):
     rad = math.radians(deg)
