@@ -23,7 +23,8 @@ def main():
     comm.serial("hello")
 
     pass
-main()
+while 1:
+    main()
  
     
     
