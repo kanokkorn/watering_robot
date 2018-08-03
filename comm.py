@@ -10,8 +10,8 @@ def serial(act_str):
         cmd = str(input(act_str))
         ser.write(cmd)
         print(cmd)
-    except :
-        print("Serial is not available")
+    except KeyboardInterrupt:
+        raise       
 if __name__ == '__main__':
     print("comm is connect directly")
 else:

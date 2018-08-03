@@ -2,10 +2,12 @@ import csv
 import math
 
 #get lat lon from Ublox neo m6 via UART
-def read_loc(lines):
+def read_loc():
     with open('lat_lon.csv') as f:
         lines = f.readlines()
-    return(lines)
+        for line in lines:
+            print(line)
+    pass
 def haversine(lines):
     
     lat_int = 1
@@ -20,4 +22,4 @@ def Deg_Rad(deg):
     
     return rad
     
-    
+read_loc()    
