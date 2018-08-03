@@ -9,12 +9,12 @@ import time
 def action(lat_int, lat_fin, lon_int, lon_fin):
     if (lat_int == lat_fin) & (lon_int == lon_fin) :
         print("Agent is Watering")
-        ser.write("Stop")
+        comm.serial("Stop")
         time.sleep(10)
         pass
     if  (lat_int != lat_fin) & (lon_int != lon_fin) :
         print("Agent is moving")
-        ser.write("Forward")
+        comm.serial("Forward")
         time.sleep(3)
         pass
     
@@ -25,6 +25,12 @@ def main():
     pass
 while 1:
     main()
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 8eb6691c6ec55e15e5f6206e0d2912e71d1ecbb9
  
     
     
