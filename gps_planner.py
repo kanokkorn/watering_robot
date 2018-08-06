@@ -13,13 +13,18 @@ def read_loc():
             time.sleep(60)    
     return (x, y)
 def distance():
-    del_lat
+    d_lat = math.log(math.tan(((math.pi)/4)+(lat_2/2))/math.tan(((math.pi)/4)+lat_1/2) , base = e)
+    q = 
+    d =
+    return ()
+def crosstrack():
     
-
-    
+    return     
 def Deg_Rad(deg):
-    rad = math.radians(deg)
-
-    
+    rad = math.radians(deg)    
     return rad
- read_loc()    
+def mid_point():
+    
+
+
+read_loc()    
