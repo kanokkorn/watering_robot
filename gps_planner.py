@@ -1,9 +1,9 @@
 import csv
-import math
+import math as m
 import time
 
 #get lat lon from Ublox neo m6 via UART
-def read_loc():
+def read_files():
     with open('lat_lon.csv') as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')
         for row in readCSV:
@@ -13,7 +13,7 @@ def read_loc():
             time.sleep(60)    
     return (x, y)
 def distance():
-    d_lat = math.log(math.tan(((math.pi)/4)+(lat_2/2))/math.tan(((math.pi)/4)+lat_1/2) , base = e)
+    d_lat = m.log(m.tan(((m.pi)/4)+(lat_2/2))/m.tan(((m.pi)/4+lat_1/2) , base = e)
     q = 
     d =
     return ()
@@ -25,6 +25,9 @@ def Deg_Rad(deg):
     return rad
 def mid_point():
     
-
-
-read_loc()    
+    return 
+def main():
+    
+    return
+    
+   
