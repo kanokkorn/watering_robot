@@ -15,8 +15,8 @@ Palm tree analysis
  
 Loadcell
 ---
- simple loadcell
+loadcell built-in with watering-robot
  
 Soil Measurement
 ---
- simple soil measurement
+soil measurement built-in with watering-robot
