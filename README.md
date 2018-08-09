@@ -5,18 +5,19 @@ Main objective:
  * Loadcell
  * Soil Measurement
  
-Watering
+## Watering
 ---
 Autonomous robot follow gps plan 
  
-Palm tree analysis
+## Palm tree analysis
 ---
- Analysis using computer vision and machine learning
+ Analysis using computer vision and machine learning \
+ <img src="images/tf_palm.jpg" width="600">
  
-Loadcell
+## Loadcell
 ---
 loadcell built-in with watering-robot
  
-Soil Measurement
+## Soil Measurement
 ---
 soil measurement built-in with watering-robot
