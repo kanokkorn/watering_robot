@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import cv2 as cv
+from tkinter import *
 
 # Read the graph.
 with tf.gfile.FastGFile("I:\\Custom-Object-Detection\\output_inference_graph\\frozen_inference_graph.pb", 'rb') as f:
