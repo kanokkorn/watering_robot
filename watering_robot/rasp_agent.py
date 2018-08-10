@@ -25,12 +25,6 @@ def main():
     pass
 while 1:
     main()
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 8eb6691c6ec55e15e5f6206e0d2912e71d1ecbb9
  
     
     

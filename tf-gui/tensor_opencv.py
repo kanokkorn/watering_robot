@@ -2,6 +2,10 @@ import numpy as np
 import tensorflow as tf
 import cv2 as cv
 from tkinter import *
+import Image, ImageTk
+
+PATH_TO_LABELS = os.path.join('data', 'mscoco_label_map.pbtxt')
+num_classes = 1
 
 # Read the graph.
 with tf.gfile.FastGFile("I:\\Custom-Object-Detection\\output_inference_graph\\frozen_inference_graph.pb", 'rb') as f:
@@ -12,6 +16,10 @@ with tf.Session() as sess:
     # Restore session
     sess.graph.as_default()
     tf.import_graph_def(graph_def, name='')
+
+    label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
+    categories = label_map_util.convert_label_map_to_categories(label_map, max_num_classes=num_classes, use_display_name=True)
+    category_index = label_map_util.create_category_index(categories)
 
     # Read and preprocess an image.
     img = cv.imread('I:\\Custom-Object-Detection\\test_images\\image-6.jpg')
@@ -30,6 +38,7 @@ with tf.Session() as sess:
 
     # Visualize detected bounding boxes.
     num_detections = int(out[0][0])
+    
     for i in range(num_detections):
         classId = int(out[3][0][i])
         score = float(out[1][0][i])
