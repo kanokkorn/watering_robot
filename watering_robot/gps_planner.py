@@ -14,8 +14,8 @@ def read_files():
     return (x, y)
 def distance():
     d_lat = m.log(m.tan(((m.pi)/4)+(lat_2/2))/m.tan(((m.pi)/4+lat_1/2) , base = e)
-    q = 
-    d =
+    q = d_la/d_lon
+    d = m.sqrt((d_lat**2)+(q**2)*d)
     return ()
 def crosstrack():
     

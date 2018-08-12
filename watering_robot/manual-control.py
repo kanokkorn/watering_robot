@@ -9,12 +9,13 @@ def forward():
     return
 def backward():
     return
-def letf():
+def left():
     return
 def right():
     return
 def main():
-    if j_val < 0 & j_val > -1:
+    if j_val < 0 & j_val >= -1:
+        left()
         return
         
     elif j_val < 0 & j_val > -1:
