@@ -18,7 +18,8 @@ def main():
         left()
         return
         
-    elif j_val < 0 & j_val > -1:
+    elif j_val > 0 & j_val <= 1:
+        right()
         return
     
 
