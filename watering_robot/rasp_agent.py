@@ -1,6 +1,6 @@
 #import gps_planner, action, 
 import comm
-import csv
+import gps_planner
 import time
 
 
@@ -17,7 +17,6 @@ def action(lat_int, lat_fin, lon_int, lon_fin):
         comm.serial("Forward")
         time.sleep(3)
         pass
-    
 def main():
     #haversine(lines)
     comm.serial("hello")
