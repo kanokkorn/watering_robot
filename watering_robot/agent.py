@@ -16,8 +16,11 @@ def forward():
 def backward():
     comm.serial()
     return
-try:
-    thrd._start_new_thread()
-    pass
-except expression as identifier:
-    pass
+while 1:
+    try:
+        thrd._start_new_thread()
+        thrd._start_new_thread()
+        pass
+    except:
+        
+        pass
