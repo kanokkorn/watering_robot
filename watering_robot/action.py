@@ -1,4 +1,3 @@
 class vehicle(object):
-    vehicle.stat = 
-    vehicle.
-'s'
+    vehicle.stat 
+    vehicle.speed 
