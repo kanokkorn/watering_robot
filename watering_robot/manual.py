@@ -2,7 +2,7 @@ import serial
 import sys, time
 import comm
 # global variable
-j_val = ()
+joy_val = ()
 
 def forward():
     comm.ser("Forward")
@@ -21,10 +21,10 @@ def right():
     time.sleep(0.03)
     return
 def main():
-    if j_val < 0 & j_val >= -1:
+    if joy_val < 0 & j_val >= -1:
         left()
         return
-    elif j_val > 0 & j_val <= 1:
+    elif joy_val > 0 & j_val <= 1:
         right()
         return
     elif expression:
@@ -32,5 +32,6 @@ def main():
     elif expression:
         pass
 # testing
-main()
+if __name__ == "__main__":
+    main()
 
