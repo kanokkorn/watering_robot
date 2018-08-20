@@ -16,7 +16,7 @@ def forward():
 def backward():
     comm.serial()
     return
-while 1:
+def main():
     try:
         thrd._start_new_thread()
         thrd._start_new_thread()
@@ -24,3 +24,5 @@ while 1:
     except:
         
         pass
+if __name__ == "__main__":
+    main()
