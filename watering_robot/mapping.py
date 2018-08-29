@@ -4,7 +4,7 @@ from gmplot import gmplot
 gmap = gmplot.GoogleMapPlotter(37.766956, -122.438481, 13)
 
 # Polygon
-golden_gate_park_lats, golden_gate_park_lons = zip(*[
+lats, lons = zip(*[
     (37.771269, -122.511015),
     (37.773495, -122.464830),
     (37.774797, -122.454538),
@@ -17,10 +17,10 @@ golden_gate_park_lats, golden_gate_park_lons = zip(*[
     (37.764028, -122.510347),
     (37.771269, -122.511015)
     ])
-gmap.plot(golden_gate_park_lats, golden_gate_park_lons, 'cornflowerblue', edge_width=10)
+gmap.plot(lats, lons, 'cornflowerblue', edge_width=10)
 
 # Scatter points
-top_attraction_lats, top_attraction_lons = zip(*[
+top_lats, top_lons = zip(*[
     (37.769901, -122.498331),
     (37.768645, -122.475328),
     (37.771478, -122.468677),
@@ -28,11 +28,11 @@ top_attraction_lats, top_attraction_lons = zip(*[
     (37.767187, -122.467496),
     (37.770104, -122.470436)
     ])
-gmap.scatter(top_attraction_lats, top_attraction_lons, '#3B0B39', size=40, marker=False)
+gmap.scatter(top_lats, top_lons, '#3B0B39', size=40, marker=False)
 
 # Marker
-hidden_gem_lat, hidden_gem_lon = 37.770776, -122.461689
-gmap.marker(hidden_gem_lat, hidden_gem_lon, 'cornflowerblue')
+hidden_lat, hidden_lon = 37.770776, -122.461689
+gmap.marker(hidden_lat, hidden_lon, 'cornflowerblue')
 
 # Draw
 gmap.draw("./my_map.html")
