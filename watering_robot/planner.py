@@ -15,7 +15,7 @@ def read_files():
     return (geo_list)
 # calculate heading direction
 def bearing():
-
+    
     pass
 # calculate distance between two points
 def distance():
@@ -28,7 +28,9 @@ def delta_lat(lat_1, lat_2):
 # delta longtitude
 def delta_lot(lot_1, lot_2):
     return(m.log(m.tan(((m.pi)/4)+(lot_2/2))/m.tan(((m.pi)/4+(lot_1/2)))))
-
+def heading():
+    
+    pass
 #print(delta_lat(69.09, 87.65))
 
 # main goes here
