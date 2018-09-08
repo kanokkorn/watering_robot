@@ -1,7 +1,7 @@
 import csv, time
 import math as m
 import pynmea2 as nm2
-import gpsd
+#import gpsd
 
 # get lat lon from Ublox neo m6 via UART
 def Ublox():

@@ -1,6 +1,6 @@
 #import gps_planner, action, 
-import comm
-import gps_planner
+#import comm
+#import gps_planner
 import time
 import threading as thrd
 
@@ -22,7 +22,6 @@ def main():
         thrd._start_new_thread()
         pass
     except:
-        
         pass
 if __name__ == "__main__":
     main()
