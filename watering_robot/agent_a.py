@@ -13,9 +13,9 @@ def func_nmea_decode():
     pass
 def func_gps_com():
     with open() as catread:
-        read_com = 
+        #read_com = 
         com_list = list(read_com)
-    #func_nmea_decode()
+    func_nmea_decode()
     return com_list
 def func_list_com():
     geo_list2x = read_gps_csv()
