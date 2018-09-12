@@ -4,11 +4,19 @@ from gmplot import gmplot
 gmap = gmplot.GoogleMapPlotter(37.766956, -122.438481, 13)
 
 # Polygon
-lats, lons = zip(*[])
+lats, lons = zip(*[
+    10.724324, 99.376802
+    10.724361, 99.376710
+    10.724410, 99.376525
+])
 gmap.plot(lats, lons, 'cornflowerblue', edge_width=10)
 
 # Scatter points
-top_lats, top_lons = zip(*[])
+top_lats, top_lons = zip(*[
+    10.724324, 99.376802
+    10.724361, 99.376710
+    10.724410, 99.376525
+])
 gmap.scatter(top_lats, top_lons, '#3B0B39', size=40, marker=False)
 
 # Marker

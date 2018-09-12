@@ -12,10 +12,10 @@ def read_gps_csv():
 def func_nmea_decode():
     pass
 def func_gps_com():
-    with open() as catread:
-        #read_com = 
+    with open("/dev/ttyS0") as catread:
+        read_com = serial.reader(catread)
         #com_list = list(read_com)
-    func_nmea_decode()
+    #func_nmea_decode()
     return com_list
 def func_list_com():
     geo_list2x = read_gps_csv()
@@ -32,6 +32,6 @@ def func_list_csv():
     return csv_list[0],csv_list[1]
 
 if func_list_csv() == func_list_com():
-    print("YEH BOI !1!1!!")
+    print("Yeh boi !1!!!")
 else :
-    print("NAAAAAAA")
+    print("NOooO")
