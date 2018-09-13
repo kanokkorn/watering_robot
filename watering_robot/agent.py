@@ -1,27 +1,18 @@
-#import gps_planner, action, 
-#import comm
-#import gps_planner
-import time
-import threading as thrd
+import os
+import sys
+import re
+sys.path.append(os.path.realpath('.'))
+from pprint import pprint
 
-def rotate_left():
-    comm.serial()
-    return
-def rotate_right():
-    comm.serial()
-    return
-def forward():
-    comm.serial()
-    return
-def backward():
-    comm.serial()
-    return
-def main():
-    try:
-        thrd._start_new_thread()
-        thrd._start_new_thread()
-        pass
-    except:
-        pass
-if __name__ == "__main__":
-    main()
+import inquirer
+
+questions = [
+    inquirer.List('size',
+                  message="What size do you need?",
+                  choices=['Jumbo', 'Large', 'Standard', 'Medium', 'Small', 'Micro'],
+              ),
+]
+
+answers = inquirer.prompt(questions)
+
+pprint(answers)
