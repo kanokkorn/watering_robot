@@ -4,8 +4,8 @@ import time
 #import pynmea2
 import serial
 
-ser = serial.Serial ("/dev/ttyS0")    #Open named port 
-ser.baudrate = 9600
+#ser = serial.Serial ("/dev/ttyS0")    #Open named port 
+#ser.baudrate = 9600
 #gps=GpsNeo6(port="/dev/ttyS0",debit=9600,diff=7) #diff is difference between utc time en local time    
 
 def read_gps_csv():
@@ -17,10 +17,11 @@ def func_nmea_decode():
     
     pass
 def func_gps_com():
-    with open(ser) as catread:
-        read_com = serial.reader(catread)
-        #com_list = list(read_com)
-    #func_nmea_decode()
+    streamreader = pynmea2.NMEAStreamReader()
+    while 1:
+        data = input.read(ser)
+        for msg in streamreader.next(data):
+            print(msg)
     return com_list
 def func_list_com():
     geo_list2x = read_gps_csv()
