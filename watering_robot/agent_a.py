@@ -1,4 +1,3 @@
-#from neo6 import GpsNeo6
 import csv
 import time
 #import pynmea2
