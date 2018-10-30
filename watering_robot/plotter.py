@@ -45,7 +45,7 @@ class GPS_Poller(threading.Thread):
             self.stop_flag = True
          except StopIteration:
             self.session = None
-            print "GPSD has terminated"
+            print ("GPSD has terminated")
             self.stop_flag = True
 
 
