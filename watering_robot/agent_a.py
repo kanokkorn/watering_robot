@@ -18,6 +18,7 @@ def func_nmea_decode():
 def func_gps_com():
     with open(ser) as catread:
         read_com = serial.reader(catread)
+        
         #com_list = list(read_com)
     #func_nmea_decode()
     return com_list
