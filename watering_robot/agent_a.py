@@ -1,7 +1,7 @@
 #from neo6 import GpsNeo6
 import csv
 import time
-import pynmea2
+#import pynmea2
 import serial
 
 ser = serial.Serial ("/dev/ttyS0")    #Open named port 
@@ -14,6 +14,7 @@ def read_gps_csv():
         geo_list = list(read_csv)
     return geo_list
 def func_nmea_decode():
+    
     pass
 def func_gps_com():
     with open(ser) as catread:
