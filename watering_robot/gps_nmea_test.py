@@ -10,5 +10,5 @@ while 1:
     if data[0:6] == '$GPGGA':                     #Set baud rate t
         msg = pynmea2.parse(data)
         print(msg.lat)
-        print(, msg.lat)                        #Send back the received data
+        print(msg.lon)                        #Send back the received data
         ser.close() 
