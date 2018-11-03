@@ -1,8 +1,7 @@
 import serial
 import pynmea2
 
-ser = serial.Serial ("/dev/ttyS0", 9600, timeout = 0.5)    #Open named port 
-ser.open()
+ser = serial.Serial ("/dev/ttyS0", 9600, timeout = 0.2)    #Open named port 
 while 1:
     try:
         data = ser.readline()
