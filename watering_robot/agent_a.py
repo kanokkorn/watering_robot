@@ -1,6 +1,6 @@
 import csv
 import time
-#import pynmea2
+import pynmea2
 import serial
 
 #ser = serial.Serial ("/dev/ttyS0")    #Open named port 
@@ -37,7 +37,7 @@ def func_list_csv():
     return csv_list[0],csv_list[1]
 
 if func_list_csv() == func_list_com():
-    print("Yeh boi !1!!!")
+    print("Matched. Start watering")
 else :
-    print("NOooO")
+    print("Not matched. Continues moving")
 # fixing 
