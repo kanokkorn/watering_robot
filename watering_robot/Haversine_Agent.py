@@ -3,7 +3,7 @@ import time
 import pynmea2
 import serial
 import math as mth
-import multiprocessing
+import multiprocessing as multi
 #ser = serial.Serial ("/dev/ttyS0", 9600, timeout = 0.01)
 
 def read_gps_csv():
@@ -11,10 +11,6 @@ def read_gps_csv():
         read_csv = csv.reader(csvfile, delimiter=',')
         geo_list = list(read_csv)
     return geo_list
-
-def func_nmea_decode():
-    
-    pass
 
 def func_gps_com():
     try:
@@ -57,14 +53,26 @@ def distance():
     earth_radius = 6371e3
     dstance = mth.sqrt(((delta_lat(func_list_csv(),func_list_csv()))**2)+(delta_Q**2)*earth_radius)
     return (dstance)
+
+def bearing(lat_csv,lat_com):
+    lat_csv = list(map(float, lat_csv[0]))
+    lat_com = list(map(float, lat_com[0]))
+    delta_Q = ((delta_lat(func_list_csv(),func_list_csv())))/(delta_lot(func_list_csv(),func_list_csv()))
+    b_ring = mth.atan2(mth.sin(delta_Q)*mth.cos(lat_csv)*mth.cos(lat_com)*(mth.sin(lat_com)-mth.sin(lat_csv))*mth.cos(lat_csv)*mth.cos(delta_Q))
+    return(b_ring)
 # fixing 
-def main():
-    print(delta_lat(func_list_csv(),func_list_csv()))
+def main_prog():
+    #print(delta_lat(func_list_csv(),func_list_csv()))
     if func_list_csv() == func_list_com():
         print("Position matched. Start watering")
+        print("Distance: "+distance()+"\nHeading: "+bearing(func_list_csv(),func_list_csv()))
         #ser.writelines("S")
     else :
         print("Position not matched. Continues moving")
+        print("Distance: "+distance()+"\nHeading: "+bearing(func_list_csv(),func_list_csv()))
         #ser.writelines("M")
 if __name__ == "__main__":
-    main()
+    process_1 = multi.Process(target=main_prog)
+    process_2 = multi.Process(target=func_list_csv)
+    process_1.start()
+    process_2.start()
