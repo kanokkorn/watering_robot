@@ -36,7 +36,7 @@ def func_list_com():
     print(geo_list[0],geo_list[1]) # print com list
     return geo_list[0],geo_list[1]
 
-def func_list_csv():
+def func_list_csv(): # read .csv file
     csv_list2x = read_gps_csv()
     csv_list = list(map(float, csv_list2x[1]))
     print(csv_list[0],csv_list[1]) # print csv list
@@ -53,12 +53,13 @@ def delta_lot(lon_csv,lon_com): # lon_com is initial, lon_csv is finish
     return(mth.log(mth.tan(((mth.pi)/4)+(lon_csv/2))/mth.tan(((mth.pi)/4+(lon_com/2)))))
 
 def distance():
-    q = ((delta_lat(func_list_csv(),func_list_csv())))/(delta_lot(func_list_csv(),func_list_csv()))
-    d = mth.sqrt(((delta_lat(func_list_csv(),func_list_csv()))**2)+(q**2)*d)
-    return (d)
+    delta_Q = ((delta_lat(func_list_csv(),func_list_csv())))/(delta_lot(func_list_csv(),func_list_csv()))
+    earth_radius = 6371e3
+    dstance = mth.sqrt(((delta_lat(func_list_csv(),func_list_csv()))**2)+(delta_Q**2)*earth_radius)
+    return (dstance)
 # fixing 
 def main():
-    #print(delta_lat(func_list_csv(),func_list_csv()))
+    print(delta_lat(func_list_csv(),func_list_csv()))
     if func_list_csv() == func_list_com():
         print("Position matched. Start watering")
         #ser.writelines("S")
