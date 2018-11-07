@@ -10,6 +10,8 @@ while 1:
             print(msg.lat)
             print(msg.lon)
             time.sleep(0.001)
+        else:
+            pass
     except:
         print("nothing is what it seem")
         time.sleep(0.01)
