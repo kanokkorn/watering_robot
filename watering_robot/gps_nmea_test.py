@@ -9,9 +9,10 @@ while 1:
     
     try:
         data = ser.readline()
-        for msg in streamreader.next(data):
+        for msg in streamread.next(data):
             print(msg.lat)
             print(msg.lon)
+            time(0.005)
         '''if data[0:6] == '$GPGGA':                     #Set baud rate t
             msg = pynmea2.parse(data)
             print(msg.lat)
