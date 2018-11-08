@@ -1,17 +1,13 @@
 import serial
 import pynmea2
 import time 
-    #Open named port 
+
 while 1:
-    
     try:
         ser = serial.Serial ("/dev/ttyS0", 9600, timeout = 0.01)
         datastream = pynmea2.NMEAStreamReader()
         data = ser.readline()
-        for msg in streamread.next(data):
-            print(msg.lat)
-            time.sleep(0.005)
-        '''if data[0:6] == '$GPGGA':                     #Set baud rate t
+        if data[0:6] == '$GPGGA':                    
             msg = pynmea2.parse(data)
             print(msg.lat, msg.lon)
             time.sleep(0.01)
