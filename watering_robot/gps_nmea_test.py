@@ -11,6 +11,9 @@ while 1:
             msg = pynmea2.parse(data)
             print(msg.lat, msg.lon)
             time.sleep(0.01)
+        elif data[0:6] == '$GPTXT':                    
+            print("that's not it")
+            time.sleep(0.01)
     except:
-        print("nothing is what it seem")
+        print("nothing")
         time.sleep(0.005)
