@@ -3,6 +3,7 @@ import pynmea2
 import time 
 
 while 1:
+    print("Start testing ...")
     try:
         ser = serial.Serial ("/dev/ttyS0", 9600, timeout = 0.005)
         datastream = pynmea2.NMEAStreamReader()
