@@ -4,7 +4,7 @@ import time
 
 while 1:
     try:
-        ser = serial.Serial ("/dev/ttyS0", 9600, timeout = 0.01)
+        ser = serial.Serial ("/dev/ttyS0", 9600, timeout = 0.005)
         datastream = pynmea2.NMEAStreamReader()
         data = ser.readline()
         if data[0:6] == '$GPGGA':                    
