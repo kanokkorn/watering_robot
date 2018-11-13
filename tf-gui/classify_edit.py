@@ -23,7 +23,7 @@ import time
 
 import numpy as np
 import tensorflow as tf
-import cv2
+import matplotlib.pyplot as plt
 
 def load_graph(model_file):
   graph = tf.Graph()
@@ -61,7 +61,6 @@ def read_tensor_from_image_file(file_name, input_height=299, input_width=299,
 
   return result
 
-
 def load_labels(label_file):
   label = []
   proto_as_ascii_lines = tf.gfile.GFile(label_file).readlines()
@@ -70,7 +69,7 @@ def load_labels(label_file):
   return label
 
 if __name__ == "__main__":
-  file_name = "tf_files/flower_photos/daisy/3475870145_685a19116d.jpg"
+  file_name = "I:/palm_classification/tf_files/tf_files"
   model_file = "I:/palm_classification/tf_files/tf_files/retrained_graph.pb"
   label_file = "I:/palm_classification/tf_files/tf_files/retrained_labels.txt"
   input_height = 299
@@ -79,37 +78,7 @@ if __name__ == "__main__":
   input_std = 128
   input_layer = "Mul"
   output_layer = "final_result"
-
-  parser = argparse.ArgumentParser()
-  parser.add_argument("--image", help="image to be processed")
-  parser.add_argument("--graph", help="graph/model to be executed")
-  parser.add_argument("--labels", help="name of file containing labels")
-  parser.add_argument("--input_height", type=int, help="input height")
-  parser.add_argument("--input_width", type=int, help="input width")
-  parser.add_argument("--input_mean", type=int, help="input mean")
-  parser.add_argument("--input_std", type=int, help="input std")
-  parser.add_argument("--input_layer", help="name of input layer")
-  parser.add_argument("--output_layer", help="name of output layer")
-  args = parser.parse_args()
-
-  if args.graph:
-    model_file = args.graph
-  if args.image:
-    file_name = args.image
-  if args.labels:
-    label_file = args.labels
-  if args.input_height:
-    input_height = args.input_height
-  if args.input_width:
-    input_width = args.input_width
-  if args.input_mean:
-    input_mean = args.input_mean
-  if args.input_std:
-    input_std = args.input_std
-  if args.input_layer:
-    input_layer = args.input_layer
-  if args.output_layer:
-    output_layer = args.output_layer
+  imgplot = plt.imshow(img)
 
   graph = load_graph(model_file)
   t = read_tensor_from_image_file(file_name,
@@ -132,10 +101,13 @@ if __name__ == "__main__":
 
   top_k = results.argsort()[-7:][::-1]
   labels = load_labels(label_file)
-
+  plt.subplot(223)
+  plt.plot([1,2,3], label="test1")
+  plt.plot([3,2,1], label="test2")
+  # Place a legend to the right of this smaller subplot.
+  plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
   print('\nEvaluation time (1-image): {:.3f}s\n'.format(end-start))
   template = "{} (score={:0.5f})"
-  i
   for i in top_k:
     print(template.format(labels[i], results[i])+"\n")
   
