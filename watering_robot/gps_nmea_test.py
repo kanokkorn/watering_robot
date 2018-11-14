@@ -13,8 +13,8 @@ for new_data in gps_socket:
         print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
         if (data_stream.TPV['lat'] != '10.725359') or (data_stream.TPV['lon'] != '99.375334'):
             print("MOVE")
-            ser.write('M')
+            ser.write(str.encode('M'))
         elif  (data_stream.TPV['lat'] == '10.725359') or (data_stream.TPV['lon'] == '99.375334'):
             print("STOP")
-            ser.write('S')
+            ser.write(str.encode('S'))
             break
