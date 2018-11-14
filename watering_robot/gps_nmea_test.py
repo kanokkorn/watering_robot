@@ -17,3 +17,4 @@ for new_data in gps_socket:
         elif  (data_stream.TPV['lat'] == '10.725359') or (data_stream.TPV['lon'] == '99.375334'):
             print("STOP")
             ser.write('S')
+            break
