@@ -11,10 +11,10 @@ for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
         print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
-        if (data_stream.TPV['lat'] != 10.725385) or (data_stream.TPV['lon'] !=99.375421):
+        if (data_stream.TPV['lat'] != '10.72547') or (data_stream.TPV['lon'] != '10.72547'):
             print("MOVE")
             ser.write(str.encode('M'))
-        elif  (data_stream.TPV['lat'] == 10.725385) or (data_stream.TPV['lon'] == 99.375421):
+        elif  (data_stream.TPV['lat'] == '10.72547') or (data_stream.TPV['lon'] == '99.37547'):
             print("STOP")
             ser.write(str.encode('S'))
             break
