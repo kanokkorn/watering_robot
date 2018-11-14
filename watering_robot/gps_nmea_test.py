@@ -1,7 +1,7 @@
 from gps3 import gps3
 import serial
 
-ser = serial.Serial('/dev/tty.usbserial', 9600)
+ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
 data_stream = gps3.DataStream()
 gps_socket.connect()
