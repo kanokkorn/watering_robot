@@ -6,5 +6,7 @@ gps_socket.watch()
 for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
-        print('Altitude = ', data_stream.TPV['alt'])
-        print('Latitude = ', data_stream.TPV['lat'])
+        print('Altitude = ', data_stream.TPV['lat'])
+        print('Latitude = ', data_stream.TPV['lon'])
+        if (data_stream.TPV['lat'] != '10.725359') & (data_stream.TPV['lon'] != '99.375334'):
+            print("MOVE")

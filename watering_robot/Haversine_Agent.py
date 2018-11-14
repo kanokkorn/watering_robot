@@ -1,10 +1,13 @@
 import csv
 import time
-import pynmea2
-import serial
+from gps3 import gps3
 import math as mth
 import multiprocessing as multi
-#ser = serial.Serial ("/dev/ttyS0", 9600, timeout = 0.01)
+
+gps_socket = gps3.GPSDSocket()
+data_stream = gps3.DataStream()
+gps_socket.connect()
+gps_socket.watch()
 
 def read_gps_csv():
     with open('watering_robot/lat_lon.csv') as csvfile:
@@ -13,18 +16,12 @@ def read_gps_csv():
     return geo_list
 
 def func_gps_com():
-    try:
-        data = pynmea2.NMEAStreamReader(ser.readline())
-        if data[0:6] == '$GPGGA':                
-            msg = pynmea2.parse(data)
-            print(msg.lat)
-            print(msg.lon)
-            com_list = [msg.lat, msg.lon]
-            time.sleep(0.01)
-            return com_list
-    except:
-        print("GPS signal not found")
-        pass
+    for new_data in gps_socket:
+        if new_data:
+            data_stream.unpack(new_data)
+            print('Altitude = ', data_stream.TPV['alt'])
+            print('Latitude = ', data_stream.TPV['lat'])
+            
 
 def func_list_com():
     geo_list2x = read_gps_csv()
