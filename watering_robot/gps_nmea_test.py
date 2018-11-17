@@ -29,13 +29,13 @@ for new_data in gps_socket:
                 lat_A = math.radians(in_lat)
             except ValueError:
                 print("lat N/A value")
-                lat_A = 10.725410
+                lat_A = math.radians(10.725410)
             try:
                 in_lon = float(data_stream.TPV['lon'])
                 lon_A = math.radians(in_lon)
             except ValueError:
                 print("lon N/A value")
-                lon_A = 99.375075
+                lon_A = math.radians(99.375075)
             lat_B = math.radians(10.725416)
             lon_B = math.radians(99.375431)
             del_lat = (10.725416-lat_A)
