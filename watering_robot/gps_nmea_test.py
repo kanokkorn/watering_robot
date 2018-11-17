@@ -36,10 +36,10 @@ for new_data in gps_socket:
             except ValueError:
                 print("lon N/A value")
                 lon_A = math.radians(99.375075)
-            lat_B = math.radians(10.725416)
-            lon_B = math.radians(99.375431)
-            del_lat = (10.725416-lat_A)
-            del_lon = (99.375431-lon_A)
+            lat_B = math.radians(10.725644)
+            lon_B = math.radians(99.375124)
+            del_lat = (10.725644-lat_A)
+            del_lon = (99.375124-lon_A)
             a = math.sin(del_lat/2)*math.sin(del_lat/2)+math.cos(lat_A)*math.cos(lat_B)*math.sin(del_lon)
             c = 2*math.atan2(math.sqrt(a), math.sqrt(1-a))
             distance = earth_radius*c
