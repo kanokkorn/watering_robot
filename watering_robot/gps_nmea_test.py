@@ -1,19 +1,32 @@
 from gps3 import gps3
 import serial
+import math
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
 data_stream = gps3.DataStream()
 gps_socket.connect()
 gps_socket.watch()
+earth_radius = 6371e3
 
 for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
         print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
         if (data_stream.TPV['lat'] != '10.72543') or (data_stream.TPV['lon'] != '99.375431'):
-            print("MOVE")
-            ser.write(str.encode('M'))
+            del_lat = math.log(math.tan(((math.pi)/4)+(((float(data_stream.TPV['lat']))/2))/math.tan(((math.pi)/4+((10.72543))/2))))
+            del_lon = math.log(math.tan(((math.pi)/4)+(((float(data_stream.TPV['lon']))/2))/math.tan(((math.pi)/4+((99.375431))/2))))
+            del_Q = (del_lat/del_lon)
+            distance = math.sqrt(((del_lat)**2)+(del_Q**2)*earth_radius)
+            
+            if (distance > 0.5)
+                print("MOVE")
+                ser.write(str.encode('M'))
+            elif (distance < 0.5):
+                print("STOP")
+                ser.write(str.encode('S'))
+                pass
+
         elif  (data_stream.TPV['lat'] == '10.72543') or (data_stream.TPV['lon'] == '99.375431'):
             print("STOP")
             ser.write(str.encode('S'))
