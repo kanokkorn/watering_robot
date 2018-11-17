@@ -44,11 +44,11 @@ for new_data in gps_socket:
             c = 2*math.atan2(math.sqrt(a), math.sqrt(1-a))
             distance = earth_radius*c
 
-            if (distance > 0.5):
+            if (distance > 1200):
                 print("distance: ", distance)
                 print("MOVE")
                 ser.write(str.encode('M'))
-            elif (distance < 0.5):
+            elif (distance < 1200):
                 print("distance: ", distance)
                 print("STOP")
                 ser.write(str.encode('S'))
