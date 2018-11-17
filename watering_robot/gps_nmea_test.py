@@ -25,17 +25,21 @@ for new_data in gps_socket:
 
         if (data_stream.TPV['lat'] != '10.72543') or (data_stream.TPV['lon'] != '99.375431'):
             try:
-                lat_A = math.radians(float(data_stream.TPV['lat']))
+                in_lat = float(data_stream.TPV['lat'])
+                lat_A = math.radians(in_lat)
             except ValueError:
-                print("GPS pass N/A value")
+                print("lat N/A value")
+                lat_A = 10.725410
             try:
-                lon_A = math.radians(float(data_stream.TPV['lon']))
+                in_lon = float(data_stream.TPV['lon'])
+                lon_A = math.radians(in_lon)
             except ValueError:
-                print("GPS pass N/A value")
+                print("lon N/A value")
+                lon_A = 99.375075
             lat_B = math.radians(10.725416)
             lon_B = math.radians(99.375431)
-            del_lat = (10.725416-float(data_stream.TPV['lat']))
-            del_lon = (99.375431-float(data_stream.TPV['lon']))
+            del_lat = (10.725416-lat_A)
+            del_lon = (99.375431-lon_A)
             a = math.sin(del_lat/2)*math.sin(del_lat/2)+math.cos(lat_A)*math.cos(lat_B)*math.sin(del_lon)
             c = 2*math.atan2(math.sqrt(a), math.sqrt(1-a))
             distance = earth_radius*c
