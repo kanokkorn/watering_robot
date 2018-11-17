@@ -20,10 +20,19 @@ for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
         print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
+        if (data_stream.TPV['lat'] == 'n/a') or (data_stream.TPV['lon'] != 'n/a'):
+            pass
+
         if (data_stream.TPV['lat'] != '10.72543') or (data_stream.TPV['lon'] != '99.375431'):
-            lat_A = math.radians(float(data_stream.TPV['lat']))
+            try:
+                lat_A = math.radians(float(data_stream.TPV['lat']))
+            except ValueError:
+                print("GPS pass N/A value")
+            try:
+                lon_A = math.radians(float(data_stream.TPV['lon']))
+            except ValueError:
+                print("GPS pass N/A value")
             lat_B = math.radians(10.725416)
-            lon_A = math.radians(float(data_stream.TPV['lon']))
             lon_B = math.radians(99.375431)
             del_lat = (10.725416-float(data_stream.TPV['lat']))
             del_lon = (99.375431-float(data_stream.TPV['lon']))
