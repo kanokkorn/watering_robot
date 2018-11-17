@@ -32,9 +32,11 @@ for new_data in gps_socket:
             distance = earth_radius*c
 
             if (distance > 0.5):
+                print("distance: ", distance)
                 print("MOVE")
                 ser.write(str.encode('M'))
             elif (distance < 0.5):
+                print("distance: ", distance)
                 print("STOP")
                 ser.write(str.encode('S'))
                 pass
