@@ -10,11 +10,11 @@ gps_socket.watch()
 earth_radius = 6371e3
 x = 0
 
-with open('watering_robot/lat_lon_test.csv', newline='') as f:
+'''with open('watering_robot/lat_lon_test.csv', newline='') as f:
   reader = csv.reader(f)
   for row in reader:
     read_csv = csv.reader(csvfile, delimiter=',')
-    geo_list = list(read_csv)
+    geo_list = list(read_csv)'''
 
 for new_data in gps_socket:
     if new_data:
