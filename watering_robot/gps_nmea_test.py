@@ -39,16 +39,16 @@ for new_data in gps_socket:
             lat_B = math.radians(10.725644)
             lon_B = math.radians(99.375124)
             del_lat = (10.725644-lat_A)
-            del_lon = (99.375124-lon_A)
+            del_lon = (99.375431-lon_A)
             a = math.sin(del_lat/2)*math.sin(del_lat/2)+math.cos(lat_A)*math.cos(lat_B)*math.sin(del_lon)
             c = 2*math.atan2(math.sqrt(a), math.sqrt(1-a))
             distance = earth_radius*c
 
-            if (distance > 1200):
+            if (c > .0002):
                 print("distance: ", distance)
                 print("MOVE")
                 ser.write(str.encode('M'))
-            elif (distance < 1200):
+            elif (c < .0002):
                 print("distance: ", distance)
                 print("STOP")
                 ser.write(str.encode('S'))
