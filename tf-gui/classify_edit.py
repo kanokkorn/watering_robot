@@ -69,15 +69,16 @@ def load_labels(label_file):
   return label
 
 if __name__ == "__main__":
-  file_name = "I:/palm_classification/tf_files/tf_files"
-  model_file = "I:/palm_classification/tf_files/tf_files/retrained_graph.pb"
-  label_file = "I:/palm_classification/tf_files/tf_files/retrained_labels.txt"
+  file_name = "G:/palm_classification/tf_files/tf_files"
+  model_file = "G:/palm_classification/tf_files/tf_files/retrained_graph.pb"
+  label_file = "G:/palm_classification/tf_files/tf_files/retrained_labels.txt"
   input_height = 299
   input_width = 299
   input_mean = 128
   input_std = 128
   input_layer = "Mul"
   output_layer = "final_result"
+  img = "G:/palm_classification/tf_files/tf_files"
   imgplot = plt.imshow(img)
 
   graph = load_graph(model_file)

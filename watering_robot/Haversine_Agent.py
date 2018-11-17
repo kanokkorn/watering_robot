@@ -73,3 +73,8 @@ if __name__ == "__main__":
     process_2 = multi.Process(target=func_list_csv)
     process_1.start()
     process_2.start()
+
+            #del_lat = math.log(math.tan(((math.pi)/4))+(((float(data_stream.TPV['lat']))/2))/math.tan(((math.pi)/4+((10.725416))/2)))
+            #del_lon = math.log(math.tan(((math.pi)/4))+(((float(data_stream.TPV['lon']))/2))/math.tan(((math.pi)/4+((99.375076))/2)))
+            #del_Q = (del_lat/del_lon)
+            #distance = math.sqrt(((del_lat)**2)+(del_Q**2)*(del_lon**2))*earth_radius

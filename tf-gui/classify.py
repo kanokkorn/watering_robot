@@ -69,9 +69,9 @@ def load_labels(label_file):
   return label
 
 if __name__ == "__main__":
-  file_name = "tf_files/flower_photos/daisy/3475870145_685a19116d.jpg"
-  model_file = "I:/palm_classification/tf_files/tf_files/retrained_graph.pb"
-  label_file = "I:/palm_classification/tf_files/tf_files/retrained_labels.txt"
+  file_name = "G:/palm_classification/tf_files/tf_files/palm/Lack_of_Boron"
+  model_file = "G:/palm_classification/tf_files/tf_files/retrained_graph.pb"
+  label_file = "G:/palm_classification/tf_files/tf_files/retrained_labels.txt"
   input_height = 299
   input_width = 299
   input_mean = 128
@@ -136,4 +136,4 @@ if __name__ == "__main__":
   template = "{} (score={:100d})"
   i
   for i in top_k:
-    print(template.format(labels[i], results[i])+"\n"+)
+    print(template.format(labels[i], results[i])+"\n")

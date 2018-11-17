@@ -21,15 +21,20 @@ for new_data in gps_socket:
         data_stream.unpack(new_data)
         print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
         if (data_stream.TPV['lat'] != '10.72543') or (data_stream.TPV['lon'] != '99.375431'):
-            del_lat = math.log(math.tan(((math.pi)/4)+(((float(data_stream.TPV['lat']))/2))/math.tan(((math.pi)/4+((10.72543))/2))))
-            del_lon = math.log(math.tan(((math.pi)/4)+(((float(data_stream.TPV['lon']))/2))/math.tan(((math.pi)/4+((99.375431))/2))))
-            del_Q = (del_lat/del_lon)
-            distance = math.sqrt(((del_lat)**2)+(del_Q**2)*earth_radius)
+            lat_A = math.radians(float(data_stream.TPV['lat']))
+            lat_B = math.radians(10.725416)
+            lon_A = math.radians(float(data_stream.TPV['lon']))
+            lon_B = math.radians(99.375431)
+            del_lat = (10.725416-float(data_stream.TPV['lat']))
+            del_lon = (99.375431-float(data_stream.TPV['lon']))
+            a = math.sin(del_lat/2)*math.sin(del_lat/2)+math.cos(lat_A)*math.cos(lat_B)*math.sin(del_lon)
+            c = 2*math.atan2(math.sqrt(a), math.sqrt(1-a))
+            distance = earth_radius*c
 
-            if (distance > .5)
+            if (distance > 0.5):
                 print("MOVE")
                 ser.write(str.encode('M'))
-            elif (distance < .5):
+            elif (distance < 0.5):
                 print("STOP")
                 ser.write(str.encode('S'))
                 pass
