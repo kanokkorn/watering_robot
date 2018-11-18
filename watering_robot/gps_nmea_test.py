@@ -32,7 +32,7 @@ for new_data in gps_socket:
                 lat_A = math.radians(10.725410)
             try:
                 in_lon = float(data_stream.TPV['lon'])
-                lon_A = math.radians(in_lon)
+                lon_AR = math.radians(in_lon)
             except ValueError:
                 print("lon N/A value")
                 lon_A = math.radians(99.375075)
@@ -40,21 +40,20 @@ for new_data in gps_socket:
             lon_B = math.radians(99.375124)
             del_lat = (10.725644-lat_A)
             del_lon = (99.375431-lon_A)
-            a = math.sin(del_lat/2)*math.sin(del_lat/2)+math.cos(lat_A)*math.cos(lat_B)*math.sin(del_lon)
-            c = 2*math.atan2(math.sqrt(a), math.sqrt(1-a))
+            a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
+            try:
+                c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
+            except ValueError as identifier:
+                print("STOP")
+                break
             distance = earth_radius*c
 
-            if (c > .0002):
+            if (distance > 1):
                 print("distance: ", c)
                 print("MOVE")
                 ser.write(str.encode('M'))
-            elif (c < .0002):
+            elif (distance < 1):
                 print("distance: ", c)
                 print("STOP")
                 ser.write(str.encode('S'))
                 pass
-
-        elif  (data_stream.TPV['lat'] == '10.72543') or (data_stream.TPV['lon'] == '99.375431'):
-            print("STOP")
-            ser.write(str.encode('S'))
-            break
