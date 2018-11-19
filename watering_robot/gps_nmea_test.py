@@ -39,8 +39,7 @@ for new_data in gps_socket:
             try:
                 c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
             except ValueError as identifier:
-                print("STOP")
-                break
+                print("No Value")
             distance = earth_radius*c
 
             if (distance > 1):
