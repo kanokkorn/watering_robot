@@ -34,14 +34,13 @@ for new_data in gps_socket:
             lat_A = math.radians(in_lat)
             lat_B = math.radians(10.712767)
             del_lat = math.radians(10.712767-(in_lat+0.005))
-            del_lon = math.radians(99.378638-(in_lat+0.005))
+            del_lon = math.radians(99.378638-(in_lon+0.005))
             a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
             try:
                 c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
             except ValueError as identifier:
                 print("No Value")
             distance = earth_radius*c
-
             if (distance > 1):
                 print("distance: ", distance)
                 print("MOVE")
