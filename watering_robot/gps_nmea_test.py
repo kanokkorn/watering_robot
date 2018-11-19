@@ -45,8 +45,11 @@ for new_data in gps_socket:
                 print("distance: ", distance)
                 print("MOVE")
                 ser.write(str.encode('M'))
-            elif (distance < 1):
+            elif (distance < 1 and distance != 0):
                 print("distance: ", distance)
                 print("STOP")
                 ser.write(str.encode('S'))
                 break
+            elif (distance == 0):
+                print("No value")
+                print("PASS")
