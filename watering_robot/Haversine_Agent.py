@@ -21,8 +21,7 @@ def func_gps_com():
             data_stream.unpack(new_data)
             print('Altitude = ', data_stream.TPV['alt'])
             print('Latitude = ', data_stream.TPV['lat'])
-            
-
+        
 def func_list_com():
     geo_list2x = read_gps_csv()
     geo_list = list(map(float, geo_list2x[1]))
