@@ -8,8 +8,6 @@ data_stream = gps3.DataStream()
 gps_socket.connect()
 gps_socket.watch()
 earth_radius = 6371e3
-x = 0
-
 '''with open('watering_robot/lat_lon_test.csv', newline='') as f:
   reader = csv.reader(f)
   for row in reader:
@@ -22,24 +20,21 @@ for new_data in gps_socket:
         print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
         if (data_stream.TPV['lat'] == 'n/a') or (data_stream.TPV['lon'] != 'n/a'):
             pass
-
         if (data_stream.TPV['lat'] != '10.72543') or (data_stream.TPV['lon'] != '99.375431'):
             try:
                 in_lat = float(data_stream.TPV['lat'])
-                lat_A = math.radians(in_lat)
             except ValueError:
                 print("lat N/A value")
-                lat_A = math.radians(10.725410)
+                lat_A = (10.712676)
             try:
                 in_lon = float(data_stream.TPV['lon'])
-                lon_AR = math.radians(in_lon)
             except ValueError:
                 print("lon N/A value")
-                lon_A = math.radians(99.375075)
-            lat_B = math.radians(10.725644)
-            lon_B = math.radians(99.375124)
-            del_lat = (10.725644-lat_A)
-            del_lon = (99.375431-lon_A)
+                lon_A = (99.375075)
+            lat_A = math.radians(in_lat)
+            lat_B = math.radians(10.712767)
+            del_lat = math.radians(10.712767-(in_lat+0.005))
+            del_lon = math.radians(99.378638-(in_lat+0.005))
             a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
             try:
                 c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
@@ -49,11 +44,11 @@ for new_data in gps_socket:
             distance = earth_radius*c
 
             if (distance > 1):
-                print("distance: ", c)
+                print("distance: ", distance)
                 print("MOVE")
                 ser.write(str.encode('M'))
             elif (distance < 1):
-                print("distance: ", c)
+                print("distance: ", distance)
                 print("STOP")
                 ser.write(str.encode('S'))
                 pass
