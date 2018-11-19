@@ -49,4 +49,4 @@ for new_data in gps_socket:
                 print("distance: ", distance)
                 print("STOP")
                 ser.write(str.encode('S'))
-                pass
+                break
