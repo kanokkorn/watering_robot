@@ -41,11 +41,11 @@ for new_data in gps_socket:
             except ValueError as identifier:
                 print("No Value")
             distance = earth_radius*c
-            if (distance > 3):
+            if (distance > 5):
                 print("distance: ", distance)
                 print("MOVE")
                 ser.write(str.encode('M'))
-            elif (distance < 3 and distance != 0):
+            elif (distance < 5 and distance != 0):
                 print("distance: ", distance)
                 print("STOP")
                 ser.write(str.encode('S'))
