@@ -53,9 +53,9 @@ for new_data in gps_socket:
                 print("\r lon N/A value \n")
                 in_lon = (99.378788)
             lat_A = math.radians(in_lat)
-            lat_B = math.radians(10.712709)
-            del_lat = math.radians(10.712709-(in_lat))
-            del_lon = math.radians(99.378788-(in_lon))
+            lat_B = math.radians(10.725378)
+            del_lat = math.radians(10.725378-(in_lat))
+            del_lon = math.radians(99.375355-(in_lon))
             a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
             try:
                 c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
