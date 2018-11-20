@@ -1,3 +1,25 @@
+'''
+Copyright (c) [2018] [Kanokkorn]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+'''
+
 import gps3
 import serial
 import math
@@ -17,8 +39,8 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
     read = csv.reader(f)
     for gps_row in read:
         print(gps_row)
-        lat_b = float(gps_row[0])
-        lon_b = float(gps_row[1])
+        lat_b = float(gps_row[0]) #unpack list to float
+        lon_b = float(gps_row[1]) 
         time.sleep(0.2)
         
         #read GPS from socket
