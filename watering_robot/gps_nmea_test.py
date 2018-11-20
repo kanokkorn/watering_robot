@@ -47,16 +47,16 @@ for new_data in gps_socket:
                 in_lat = float(data_stream.TPV['lat'])
             except ValueError:
                 print("\r lat N/A value \n")
-                in_lat = (10.712709)
+                in_lat = (10.725745)
             try:
                 in_lon = float(data_stream.TPV['lon'])
             except ValueError:
                 print("\r lon N/A value \n")
-                in_lon = (99.378788)
+                in_lon = (99.375415)
             lat_A = math.radians(in_lat)
-            lat_B = math.radians(10.725378)
-            del_lat = math.radians(10.725378-(in_lat))
-            del_lon = math.radians(99.375355-(in_lon))
+            lat_B = math.radians(10.725745)
+            del_lat = math.radians(10.725745-(in_lat))
+            del_lon = math.radians(99.375415-(in_lon))
             a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
             try:
                 c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
