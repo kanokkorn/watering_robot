@@ -38,7 +38,7 @@ for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
         print("====================================")
-        sys.stdout.write('\r Altitude = %f' %data_stream.TPV['lat'], 'Latitude = %f' %data_stream.TPV['lon']+"\n")
+        sys.stdout.write('\r Altitude = %f' %data_stream.TPV['lat'], 'Latitude = %f' %data_stream.TPV['lon'])
         if (data_stream.TPV['lat'] == 'n/a') or (data_stream.TPV['lon'] != 'n/a'):
             pass
         if (data_stream.TPV['lat'] != '10.72543') or (data_stream.TPV['lon'] != '99.375431'):
