@@ -8,7 +8,7 @@ class Video():
             raise RuntimeError('Could not start camera')
     
     def cap_frame(self):
-        _,self.frame = self.capture.read()
+        success, self.frame = self.capture.read()
         ret, jpeg = cv2.imencode('.jpg', self.frame)
         return jpeg.tobytes()
 
