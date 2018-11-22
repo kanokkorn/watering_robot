@@ -40,7 +40,6 @@ void setup()
    
      //define the servo input pins
   myServo.attach(14); //A0 
-
   }
 }
 

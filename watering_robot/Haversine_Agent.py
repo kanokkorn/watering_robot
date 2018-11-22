@@ -19,7 +19,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
-
+# import modules 
 import gps3
 import serial
 import math
@@ -34,7 +34,7 @@ gps_socket.connect()
 gps_socket.watch()
 earth_radius = 6371e3
 
-# prefix parameter
+# prefix parameter for 
 distance = 100
 
 #read csv files
@@ -84,7 +84,11 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
                     print("distance: ", distance)
                     print("STOP")
                     ser.write(str.encode('S'))
-                    time.sleep(20)
+                    for xtime in range(20):
+                        ser.write(str.encode('BLNK_ON'))
+                        time.sleep(.2)
+                        ser.write(str.encode('BLNK_OF'))
+                        time.sleep(.2)
                     pass
         elif (distance == 0):
                     print("No value")
