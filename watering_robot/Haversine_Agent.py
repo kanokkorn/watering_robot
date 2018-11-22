@@ -48,46 +48,46 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
         # main function
         while (distance >= 3):
             for new_data in gps_socket:
-            if new_data:
-                data_stream.unpack(new_data)
-                print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
-                if (data_stream.TPV['lat'] == 'n/a') or (data_stream.TPV['lon'] != 'n/a'):
-                    pass
-                if (data_stream.TPV['lat'] != '10.0') or (data_stream.TPV['lon'] != '10.0'):
-                    try:
-                        in_lat = float(data_stream.TPV['lat'])
-                    except ValueError:
-                        print("lat N/A value")
-                        in_lat = (10.712709)
-                    try:
-                        in_lon = float(data_stream.TPV['lon'])
-                    except ValueError:
-                        print("lon N/A value")
-                        in_lon = (99.378788)
-                lat_A = math.radians(in_lat)
-                lat_B = math.radians(lat_b)
-                del_lat = math.radians(lat_b-(in_lat))
-                del_lon = math.radians(lon_b-(in_lon))
-                a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
+                if new_data:
+                    data_stream.unpack(new_data)
+                    print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
+                    if (data_stream.TPV['lat'] == 'n/a') or (data_stream.TPV['lon'] != 'n/a'):
+                        pass
+                    if (data_stream.TPV['lat'] != '10.0') or (data_stream.TPV['lon'] != '10.0'):
+                        try:
+                            in_lat = float(data_stream.TPV['lat'])
+                        except ValueError:
+                            print("lat N/A value")
+                            in_lat = (10.712709)
+                        try:
+                            in_lon = float(data_stream.TPV['lon'])
+                        except ValueError:
+                            print("lon N/A value")
+                            in_lon = (99.378788)
+                    lat_A = math.radians(in_lat)
+                    lat_B = math.radians(lat_b)
+                    del_lat = math.radians(lat_b-(in_lat))
+                    del_lon = math.radians(lon_b-(in_lon))
+                    a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
                 
-                # check if equal zero
-                try:
-                    c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
-                except ValueError as identifier:
-                    print("No Value")
-                distance = earth_radius*c        
-                print("distance: ", distance)
-                print("MOVE")
-                ser.write(str.encode('M'))
-
-        elif (distance < 3 and distance != 0):
+                    # check if equal zero
+                    try:
+                        c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
+                    except ValueError as identifier:
+                        print("No Value")
+                    distance = earth_radius*c        
                     print("distance: ", distance)
-                    print("STOP")
-                    ser.write(str.encode('S'))
-                    for xtime in range(20):
-                        ser.write(str.encode('BLNK_ON'))
-                        time.sleep(.2)
-                        ser.write(str.encode('BLNK_OF'))
-                        time.sleep(.2)
-                    pass
-                    
+                    print("MOVE")
+                    ser.write(str.encode('M'))
+
+            else :
+                print("distance: ", distance)
+                print("STOP")
+                ser.write(str.encode('S'))
+                for xtime in range(20):
+                    ser.write(str.encode('BLNK_ON'))
+                    time.sleep(.2)
+                    ser.write(str.encode('BLNK_OF'))
+                    time.sleep(.2)
+                pass
+
