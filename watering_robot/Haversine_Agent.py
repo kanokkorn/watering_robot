@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 # import modules 
-import gps3
+from gps3 import gps3
 import serial
 import math
 import time
