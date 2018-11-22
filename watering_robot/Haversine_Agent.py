@@ -86,9 +86,9 @@ with open('./watering_robot/lat_lon.csv', 'rtU', newline='') as f:
                 print("STOP")
                 ser.write(str.encode('S'))
                 for xtime in range(20):
-                    ser.write(str.encode('BLNK_ON'))
+                    ser.write(str.encode('N'))
                     time.sleep(.2)
-                    ser.write(str.encode('BLNK_OF'))
+                    ser.write(str.encode('F'))
                     time.sleep(.2)
                 pass
 
