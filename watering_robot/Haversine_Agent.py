@@ -34,7 +34,6 @@ gps_socket.connect()
 gps_socket.watch()
 
 # prefix parameter for 
-distance = 100
 earth_radius = 6371e3
 
 #read csv files
@@ -46,7 +45,7 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
         lon_b = float(gps_row[1]) 
         
         # main function
-        while (distance >= 3):
+        while (distance > 3):
             for new_data in gps_socket:
                 if new_data:
                     data_stream.unpack(new_data)
