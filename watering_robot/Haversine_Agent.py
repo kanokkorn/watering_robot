@@ -34,6 +34,9 @@ gps_socket.connect()
 gps_socket.watch()
 earth_radius = 6371e3
 
+# prefix parameter
+distance = 100
+
 #read csv files
 with open('watering_robot/lat_lon.csv', newline='') as f:
     read = csv.reader(f)
@@ -41,9 +44,10 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
         print(gps_row)
         lat_b = float(gps_row[0]) #unpack list to float
         lon_b = float(gps_row[1]) 
-        time.sleep(0.2)
-        #read GPS from socket
-        for new_data in gps_socket:
+        
+        # main function
+        while (distance >= 3 ):
+            for new_data in gps_socket:
             if new_data:
                 data_stream.unpack(new_data)
                 print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
@@ -71,21 +75,17 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
                     c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
                 except ValueError as identifier:
                     print("No Value")
-                distance = earth_radius*c
-                
-                # main function
-                if (distance > 3):
-                    print("distance: ", distance)
-                    print("MOVE")
-                    ser.write(str.encode('M'))
+                distance = earth_radius*c        
+                print("distance: ", distance)
+                print("MOVE")
+                ser.write(str.encode('M'))
 
-                elif (distance < 3 and distance != 0):
+        elif (distance < 3 and distance != 0):
                     print("distance: ", distance)
                     print("STOP")
                     ser.write(str.encode('S'))
                     time.sleep(20)
                     pass
-
-                elif (distance == 0):
+        elif (distance == 0):
                     print("No value")
                     print("Reset to new value")
