@@ -46,7 +46,7 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
         lon_b = float(gps_row[1]) 
         
         # main function
-        while (distance >= 3 ):
+        while (distance >= 3):
             for new_data in gps_socket:
             if new_data:
                 data_stream.unpack(new_data)
@@ -90,6 +90,4 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
                         ser.write(str.encode('BLNK_OF'))
                         time.sleep(.2)
                     pass
-        elif (distance == 0):
-                    print("No value")
-                    print("Reset to new value")
+                    
