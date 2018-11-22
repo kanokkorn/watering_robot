@@ -33,19 +33,17 @@ data_stream = gps3.DataStream()
 gps_socket.connect()
 gps_socket.watch()
 
-
-# prefix parameter for 
+# prefix parameter
 distance = 10
 earth_radius = 6371e3
 
 #read csv files
-with open('./watering_robot/lat_lon.csv', newline='') as f:
+with open('watering_robot/lat_lon.csv', newline='') as f:
     read = csv.reader(f)
     for gps_row in read:
         print(gps_row)
         lat_b = float(gps_row[0]) #unpack list to float
         lon_b = float(gps_row[1]) 
-        
         # main function
         for new_data in gps_socket:
             if (new_data and distance > 3):
@@ -79,7 +77,7 @@ with open('./watering_robot/lat_lon.csv', newline='') as f:
                 print("distance: ", distance)
                 print("MOVE")
                 ser.write(str.encode('M'))
-            elif(new_data and distance < 3 ):
+            elif (new_data and distance < 3 ):
                 print("distance: ", distance)
                 print("STOP")
                 ser.write(str.encode('S'))
@@ -89,5 +87,8 @@ with open('./watering_robot/lat_lon.csv', newline='') as f:
                     ser.write(str.encode('F'))
                     time.sleep(.2)
                 break
-            
+        break
+        
+    else:
+        print('Xx End of lines Xx')    
 

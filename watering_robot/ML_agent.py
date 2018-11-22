@@ -35,11 +35,11 @@ gps_socket.watch()
 '''
 
 # prefix parameter for 
-distance = 100
+distance = 10
 earth_radius = 6371e3
 
-in_lat = 10.725200
-in_lon = 99.375200
+in_lat = 10.725450
+in_lon = 99.375350
 
 #read csv files
 with open('watering_robot/lat_lon.csv', newline='') as f:
@@ -49,7 +49,7 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
         lat_b = float(gps_row[0]) #unpack list to float
         lon_b = float(gps_row[1]) 
         # main function
-        while (distance > 5):            
+        while (distance > 6):            
             lat_A = math.radians(in_lat)
             lat_B = math.radians(lat_b)
             del_lat = math.radians(lat_b-(in_lat))
@@ -66,7 +66,7 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
             print("MOVE")
             in_lat += 0.0000005
             in_lon += 0.0000005
-            time.sleep(0.002)
+            time.sleep(0.02)
             #ser.write(str.encode('M'))
 
         else:
