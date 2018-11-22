@@ -87,7 +87,7 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
                     ser.write(str.encode('F'))
                     time.sleep(.2)
                 break
-        
+        distance = 10
     else:
         print('Xx End of lines Xx')    
 
