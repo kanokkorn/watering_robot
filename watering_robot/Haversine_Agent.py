@@ -42,7 +42,6 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
         lat_b = float(gps_row[0]) #unpack list to float
         lon_b = float(gps_row[1]) 
         time.sleep(0.2)
-        
         #read GPS from socket
         for new_data in gps_socket:
             if new_data:
