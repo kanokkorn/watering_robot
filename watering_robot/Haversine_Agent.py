@@ -26,16 +26,17 @@ import math
 import time
 import csv
 
-# setup
+# setup gps socket
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
 data_stream = gps3.DataStream()
 gps_socket.connect()
 gps_socket.watch()
-earth_radius = 6371e3
+
 
 # prefix parameter for 
 distance = 100
+earth_radius = 6371e3
 
 #read csv files
 with open('./watering_robot/lat_lon.csv', newline='') as f:
