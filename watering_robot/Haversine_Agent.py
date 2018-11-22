@@ -89,5 +89,4 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
                 break
         distance = 10
     else:
-        print('Xx End of lines Xx')    
-
+        print('Xx End of lines xX')    
