@@ -1,4 +1,4 @@
-import torch
+#import torch
 import csv
 
 with open('./watering_robot/lat_lon.csv', newline='') as f:
