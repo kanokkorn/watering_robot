@@ -43,7 +43,6 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
         print(gps_row)
         lat_b = float(gps_row[0]) #unpack list to float
         lon_b = float(gps_row[1]) 
-        
         # main function
         while (distance > 3):
             for new_data in gps_socket:
@@ -79,14 +78,13 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
                     print("MOVE")
                     ser.write(str.encode('M'))
 
-        else :
-            print("distance: ", distance)
-            print("STOP")
-            ser.write(str.encode('S'))
-            for xtime in range(20):
-                ser.write(str.encode('N'))
-                time.sleep(.2)
-                ser.write(str.encode('F'))
-                time.sleep(.2)
-            pass
+        print("distance: ", distance)
+        print("STOP")
+        ser.write(str.encode('S'))
+        for xtime in range(20):
+            ser.write(str.encode('N'))
+            time.sleep(.2)
+            ser.write(str.encode('F'))
+            time.sleep(.2)
+        pass
 
