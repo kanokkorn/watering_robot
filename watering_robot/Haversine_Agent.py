@@ -44,7 +44,7 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
         lat_b = float(gps_row[0]) #unpack list to float
         lon_b = float(gps_row[1]) 
         # main function
-        while (distance > 3):
+        while (distance > 3.0000000):
             for new_data in gps_socket:
                 if new_data:
                     data_stream.unpack(new_data)
