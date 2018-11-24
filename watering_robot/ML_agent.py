@@ -26,6 +26,7 @@ import math
 import time
 import csv
 import torch
+import classify_edit
 # setup gps socket
 '''#ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
@@ -40,7 +41,7 @@ earth_radius = 6371e3
 
 in_lat = 10.725450
 in_lon = 99.375350
-
+k = 1
 #read csv files
 with open('watering_robot/lat_lon.csv', newline='') as f:
     read = csv.reader(f)
@@ -73,11 +74,10 @@ with open('watering_robot/lat_lon.csv', newline='') as f:
             print("distance: ", distance)
             print("STOP")
             #ser.write(str.encode('S'))
-            for xtime in range(20):
-                #ser.write(str.encode('N'))
-                #ser.write(str.encode('F'))
-                print(xtime)
-                time.sleep(0.2)
+
+            print("==== Classification palm Tree :"+ str(k))
+            k += 1
+            classify_edit.main()
             distance = 10
             in_lat = lat_b
             in_lon = lon_b
