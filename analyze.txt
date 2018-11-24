@@ -1,5 +1,5 @@
 ========== 
-Sun Nov 25 04:40:17 2018
+Sun Nov 25 04:51:48 2018
 ========== 
 lack of copper	50.0149130821228 Percent
 completeness	27.641120553016663 Percent

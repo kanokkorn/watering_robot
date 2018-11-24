@@ -140,9 +140,9 @@ def main():
 
   top_k = results.argsort()[-7:][::-1]
   labels = load_labels(label_file)
+  localtime = time.asctime( time.localtime(time.time()) )
   f = open('analyze'+'.txt','w')
   print('\nEvaluation time (1-image): {:.3f}s\n'.format(end-start))
-  localtime = time.asctime( time.localtime(time.time()) )
   f.write('========== \n'+str(localtime)+'\n========== \n')
   for i in top_k:
     f.write(str(labels[i]+'\t'))
