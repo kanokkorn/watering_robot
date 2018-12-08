@@ -28,6 +28,7 @@ import csv
 import torch
 import classify_edit
 import sys
+import os
 # setup gps socket
 '''#ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
@@ -64,7 +65,7 @@ def main():
                 except ValueError:
                     print("No Value")
                 distance = earth_radius*c        
-                sys.stdout.write('\x1b[2J\x1b[H')
+                os.system('cls||clear')
                 print("Distance: ", distance, " Status : Running")
                 
                 #print("Serial_MOVE")
@@ -75,7 +76,7 @@ def main():
 
             else:
                 #ser.write(str.encode('S'))
-                sys.stdout.write('\x1b[2J\x1b[H')
+                os.system('cls||clear')
                 print('==== Checkpoint ', k," start ====")
                 time.sleep(0.3)
                 print("\nDistance: ", distance, " Status : Stop")
@@ -95,10 +96,10 @@ def main():
                 print("==== Checkpoint", k, " done ====\n")
                 k += 1
                 time.sleep(1)
-                sys.stdout.write('\x1b[2J\x1b[H')
+                os.system('cls||clear')
                 print("Start Moving to next checkpoint\n")
         else:
-            sys.stdout.write('\x1b[2J\x1b[H')
+            os.system('cls||clear')
             print('==== End of lines ====')
             time.sleep(0.5)
             print('\nFinished\n')
