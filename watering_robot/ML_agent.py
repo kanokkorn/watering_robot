@@ -26,7 +26,7 @@ import math
 import time
 import csv
 import torch
-import classify_edit
+#import classify_edit
 import sys
 import os
 # setup gps socket
@@ -66,7 +66,7 @@ def main():
                     print("No Value")
                 distance = earth_radius*c        
                 os.system('cls||clear')
-                print("Distance: ", distance, " Status : Running")
+                print("Distance: ", distance, "\nStatus : Running")
                 
                 #print("Serial_MOVE")
                 in_lat += 0.0000005
@@ -95,9 +95,9 @@ def main():
                 in_lon = lon_b
                 print("==== Checkpoint", k, " done ====\n")
                 k += 1
-                time.sleep(1)
-                os.system('cls||clear')
+                time.sleep(0.5)
                 print("Start Moving to next checkpoint\n")
+                time.sleep(1)
         else:
             os.system('cls||clear')
             print('==== End of lines ====')
