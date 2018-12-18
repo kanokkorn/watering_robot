@@ -42,6 +42,9 @@ def track():
     # prefix parameter
     distance = 10
     earth_radius = 6371e3
+    in_lat = 10.725450
+    in_lon = 99.375350
+    k = 1
     check = 1
     with open('watering_robot/lat_lon.csv', newline='') as f:
         read = csv.reader(f)
