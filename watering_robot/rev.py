@@ -1,7 +1,8 @@
 import serial
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 def main():
-    return ser.write(str.encode('B'))
+    while 1:
+        ser.write(str.encode('B'))
 if __name__ == '__main__':
     try:
         main()
