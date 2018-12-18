@@ -2,11 +2,13 @@ import serial
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 def main():
     while 1:
-        ser.write(str.encode('B'))
+        if str(input()) != None:
+            ser.write(str.encode(str(input())))
+            print(ser.write(str.encode(str(input()))))
 if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        ser.write(str.encode('S'))
         print('Serial_STOP')
+        ser.write(str.encode('S'))
         raise Exception('Interrupt...Program terminated.')

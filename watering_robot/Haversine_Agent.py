@@ -42,10 +42,10 @@ def track():
     # prefix parameter
     distance = 10
     earth_radius = 6371e3
-    in_lat = 10.000000
-    in_lon = 99.000000
+
+    in_lat = 10.725450
+    in_lon = 99.375350
     k = 1
-    check = 1
     with open('watering_robot/lat_lon.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
@@ -77,20 +77,20 @@ def track():
                     del_lat = math.radians(lat_b-(in_lat))
                     del_lon = math.radians(lon_b-(in_lon))
                     a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
-
                     # check if equal zero
                     try:
                         c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
                     except ValueError as identifier:
                         print("No Value")
                     distance = earth_radius*c        
-                    print("Distance: ", distance, " Status : Running", end='\r')
+                    os.system('cls||clear')
+                    print("Distance: ", distance, " Status : Running")
                     ser.write(str.encode('M'))
-                
+                    
                 elif (new_data and distance < 3 ):
 
                     ser.write(str.encode('S'))
-                    sys.stdout.write('\033[K')
+                    os.system('cls||clear')
                     print('\n==== Checkpoint ', k," start ====")
                     time.sleep(0.3)
                     print("\nDistance: ", distance, " Status : Stop")
@@ -100,6 +100,10 @@ def track():
                     print("\nClassification palm Tree :"+ str(k))
                     time.sleep(0.3)
                     #classify_edit.main()
+                    for target in range(10):
+                        print("writing csv files"+"."*target, end="\r")
+                        time.sleep(0.8)
+                        print('\n')
                     distance = 10
                     in_lat = lat_b
                     in_lon = lon_b
@@ -110,6 +114,7 @@ def track():
                     time.sleep(1)
 
         else:
+            os.system('cls||clear')
             print('\n==== End of lines ====')
             time.sleep(1)
             print('\nFinished\n')
