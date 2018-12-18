@@ -99,7 +99,7 @@ def track():
                     time.sleep(0.3)
                     print("\nClassification palm Tree :"+ str(k))
                     time.sleep(0.3)
-                    classify_edit.main()
+                    #classify_edit.main()
                     distance = 10
                     in_lat = lat_b
                     in_lon = lon_b
