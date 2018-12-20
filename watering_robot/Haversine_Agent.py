@@ -87,7 +87,7 @@ def track():
                     print("Distance: ", distance, " Status : Running")
                     ser.write(str.encode('M'))
                     
-                elif (new_data and distance < 5 ):
+                elif :
 
                     ser.write(str.encode('S'))
                     os.system('cls||clear')
