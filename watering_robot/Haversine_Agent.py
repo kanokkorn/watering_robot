@@ -87,7 +87,7 @@ def track():
                     print("Distance: ", distance, " Status : Running")
                     ser.write(str.encode('M'))
                     
-                else:
+                elif (new_data and distance < 5 ):
 
                     ser.write(str.encode('S'))
                     os.system('cls||clear')
@@ -103,7 +103,6 @@ def track():
                     for target in range(10):
                         print("writing csv files"+"."*target, end="\r")
                         time.sleep(0.8)
-                        print('\n')
                     distance = 10
                     in_lat = lat_b
                     in_lon = lon_b
