@@ -1,8 +1,10 @@
 import serial
+import time
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 def main():
-    while 1:
+    for i in range(0, 10)
         ser.write(str.encode('B'))
+        time.sleep(0.2)
 if __name__ == '__main__':
     try:
         main()
