@@ -27,7 +27,7 @@ import serial
 import math
 import time
 import csv
-import sys
+import os
 # setup gps socket
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
