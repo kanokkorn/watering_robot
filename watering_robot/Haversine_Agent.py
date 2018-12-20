@@ -104,7 +104,6 @@ def track():
                         print("writing csv files"+"."*target, end="\r")
                         time.sleep(0.8)
                         print('\n')
-                    distance = 10
                     in_lat = lat_b
                     in_lon = lon_b
                     print("\n==== Checkpoint", k, " done ====\n")
