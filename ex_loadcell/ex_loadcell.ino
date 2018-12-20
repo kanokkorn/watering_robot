@@ -64,7 +64,6 @@ value = analogRead(A0);
 Serial.println(value); //Print value to Serial Port
 delay(1000); //delay for 1 second
 
-
 float hug = (0.2689*value)-14.277;
 if(value<5)
 {
