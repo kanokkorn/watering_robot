@@ -19,8 +19,8 @@ def video():
 @app.route('/video_feed')
 def video_feed():
     return Response(gen(),
-    mimetype = 'multipart/x-mixed-replace; boundry = frame'
+     mimetype='multipart/x-mixed-replace; boundary=frame'
     )
 
 if __name__ == "__main__":
-    app.run(host='172.16.137.68', debug=True)
+    app.run(host='127.0.0.1', debug=True)
