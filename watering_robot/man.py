@@ -1,7 +1,6 @@
 import serial
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 def main():
-    while 1:
         if str(input()) != None:
             ser.write(str.encode(str(input())))
             print(ser.write(str.encode(str(input()))))
