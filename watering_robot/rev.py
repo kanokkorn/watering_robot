@@ -5,6 +5,7 @@ def main():
     for i in range(0, 10):
         ser.write(str.encode('B'))
         time.sleep(0.2)
+    ser.write(str.encode('S'))
 if __name__ == '__main__':
     try:
         main()
