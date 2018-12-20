@@ -57,7 +57,7 @@ def track():
             for new_data in gps_socket:
                 if (new_data and distance > 4):
                     data_stream.unpack(new_data)
-                    print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
+                    #print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
                     
                     if (data_stream.TPV['lat'] == 'n/a') or (data_stream.TPV['lon'] != 'n/a'):
                         pass
