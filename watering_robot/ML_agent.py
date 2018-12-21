@@ -46,7 +46,7 @@ def main():
     in_lat = 10.725450
     in_lon = 99.375350
     k = 1
-    with open('watering_robot/lat_lon.csv', newline='') as f:
+    with open('watering_robot/lat_lon_test.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
             print(gps_row) # check if gps read properly

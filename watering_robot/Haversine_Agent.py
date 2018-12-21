@@ -97,6 +97,12 @@ def track():
                     time.sleep(0.3)
                     print("Serial_STOP")
                     time.sleep(0.3)
+                    for target in range(10):
+                        ser.write(str.encode('O'))
+                        print("watering"+"."*target, end="\r")
+                        ser.write(str.encode('P'))
+                        time.sleep(0.8)
+                    time.sleep(0.3)
                     print("\nClassification palm Tree :"+ str(k))
                     time.sleep(0.3)
                     #classify_edit.main()
