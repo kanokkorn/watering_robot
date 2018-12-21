@@ -111,11 +111,11 @@ def track():
                     time.sleep(1)
                     print("Start Moving to next checkpoint\n")
                     time.sleep(1)
-            else:
-                os.system('cls||clear')
-                print('\n==== End of lines ====')
-                time.sleep(1)
-                print('\nFinished\n')
+        else:
+            os.system('cls||clear')
+            print('\n==== End of lines ====')
+            time.sleep(1)
+            print('\nFinished\n')
 
 if __name__ == '__main__':
     try:
