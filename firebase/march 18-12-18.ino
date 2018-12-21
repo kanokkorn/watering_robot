@@ -6,7 +6,7 @@
 #include <time.h>
 #include <DHT.h>
 
-LiquidCrystal_I2C lcd(0x3f, 20, 4);
+
 
 // Set these to run example.
 #define FIREBASE_HOST "esp32-firebase-2048a.firebaseio.com"
@@ -19,10 +19,10 @@ LiquidCrystal_I2C lcd(0x3f, 20, 4);
 #define soilpin  33
 #define pumppin  4
 
-//const int AirValue = 3000;   //4000 you need to replace this value with Value_1
-//const int WaterValue = 500;  //900 you need to replace this value with Value_2
-//int intervals = (AirValue - WaterValue)/3;   
-int soilMoistureValue; // = 3;
+const int AirValue = 520;   //you need to replace this value with Value_1
+const int WaterValue = 260;  //you need to replace this value with Value_2
+int intervals = (AirValue - WaterValue)/3;   
+int soilMoistureValue = 0;
 String s_status;
  
 // Config time
@@ -38,11 +38,11 @@ DHT dht(DHTPIN, DHTTYPE);
 
 void setup() 
 {
-//  pinMode(DEBUG_WIFICONNECT, OUTPUT);
-//  pinMode(DEBUG_PUTHDATA, OUTPUT);
+    //  pinMode(DEBUG_WIFICONNECT, OUTPUT);
+    //  pinMode(DEBUG_PUTHDATA, OUTPUT);
   pinMode(pumppin, OUTPUT);
   Serial.begin(9600);
-  lcd.begin();
+  
   WiFi.mode(WIFI_STA);
   // connect to wifi.
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -51,10 +51,10 @@ void setup()
   while (WiFi.status() != WL_CONNECTED) 
   {
     Serial.print(".");
-//    digitalWrite(DEBUG_WIFICONNECT, !digitalRead(DEBUG_WIFICONNECT));
+    //    digitalWrite(DEBUG_WIFICONNECT, !digitalRead(DEBUG_WIFICONNECT));
     delay(500);
   }
-//  digitalWrite(DEBUG_WIFICONNECT, HIGH);
+    //  digitalWrite(DEBUG_WIFICONNECT, HIGH);
   Serial.println();
   Serial.print("connected: ");
   Serial.println(WiFi.localIP());
@@ -82,11 +82,11 @@ void loop()
    s_status = "Dry";
   soilMoistureValue = analogRead(soilpin);  //put Sensor insert into soil
   
-//if(soilMoistureValue > (WaterValue) && soilMoistureValue < (WaterValue + intervals))
-//if(soilMoistureValue <  3800 && soilMoistureValue < 3900)
-// {
-//Serial.println("Very Wet"); 
-//    s_status = "Very Wet";
+  if(soilMoistureValue > (WaterValue) && soilMoistureValue < (WaterValue + intervals))
+
+ {
+       Serial.println("Very Wet"); 
+       s_status = "Very Wet";
 // lcd.clear();
 //  lcd.setCursor(0,0);
 //  lcd.print("T: ");
@@ -105,15 +105,19 @@ void loop()
 //  lcd.print("Very Wet (>33%)" ); 
 //  lcd.setCursor(0,2);
 //  lcd.print("WATER SYSTEM OFF");
-//    digitalWrite(pumppin,LOW); //Motor stops//
-//    delay(30000)
-//}
+        digitalWrite(pumppin,LOW); //Motor stops//
+        delay(3000)
+ }
   
   if(soilMoistureValue > (WaterValue + intervals) && soilMoistureValue < (AirValue - intervals))
-// if(soilMoistureValue > 0 && soilMoistureValue < 2200)
-// {
-//  Serial.println("Wet"); 
-//   s_status = "Wet";
+
+ {
+        Serial.print("T: ");
+        Serial.print(temperature);
+        Serial.print((char)223);
+        Serial.print("C");
+        Serial.println("Dry");
+        s_status = "Wet";
 //     lcd.clear();
 //  lcd.setCursor(0,0);
 //  lcd.print("T: ");
@@ -132,15 +136,19 @@ void loop()
 //  lcd.print("Wet(17-33%)" ); 
 //  lcd.setCursor(0,2);
 //  lcd.print("WATER SYSTEM OFF");
-//   digitalWrite(pumppin,LOW); //Motor stops//
-//   delay(30000);
-//  }
-//  
-//  if(soilMoistureValue < (AirValue) && soilMoistureValue > (AirValue - intervals))
-//if(soilMoistureValue > 1950 && soilMoistureValue < 2400)
-// {
-//  Serial.println("Dry"); 
-//  s_status = "Dry";
+       digitalWrite(pumppin,LOW); //Motor stops//
+       delay(3000);
+ }
+  
+  if(soilMoistureValue < (AirValue) && soilMoistureValue > (AirValue - intervals))
+
+ {
+        Serial.print("T: ");
+        Serial.print(temperature);
+        Serial.print((char)223);
+        Serial.print("C");
+        Serial.println("Dry"); 
+        s_status = "Dry";
 //  lcd.clear();
 //  lcd.setCursor(0,0);
 //  lcd.print("T: ");
@@ -159,9 +167,9 @@ void loop()
 //  lcd.print("Dry(<17%)" );
 //  lcd.setCursor(0,2);
 //  lcd.print("WATER SYSTEM ON");
-//   digitalWrite(pumppin,HIGH); //Motor stops//
-//   delay(30000);
- //  }
+   digitalWrite(pumppin,HIGH); //Motor stops//
+   delay(3000);
+ }
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   {
