@@ -27,7 +27,7 @@ import serial
 import math
 import time
 import csv
-import sys
+import os
 # setup gps socket
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
@@ -55,7 +55,7 @@ def track():
 
             # main function
             for new_data in gps_socket:
-                if (new_data and distance > 3):
+                if (new_data and distance > 5):
                     data_stream.unpack(new_data)
                     #print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
                     
@@ -87,7 +87,7 @@ def track():
                     print("Distance: ", distance, " Status : Running")
                     ser.write(str.encode('M'))
                     
-                elif (new_data and distance < 3 ):
+                elif (new_data and distance < 5 ):
 
                     ser.write(str.encode('S'))
                     os.system('cls||clear')
@@ -103,7 +103,6 @@ def track():
                     for target in range(10):
                         print("writing csv files"+"."*target, end="\r")
                         time.sleep(0.8)
-                        print('\n')
                     distance = 10
                     in_lat = lat_b
                     in_lon = lon_b
@@ -112,12 +111,11 @@ def track():
                     time.sleep(1)
                     print("Start Moving to next checkpoint\n")
                     time.sleep(1)
-
-        else:
-            os.system('cls||clear')
-            print('\n==== End of lines ====')
-            time.sleep(1)
-            print('\nFinished\n')
+            else:
+                os.system('cls||clear')
+                print('\n==== End of lines ====')
+                time.sleep(1)
+                print('\nFinished\n')
 
 if __name__ == '__main__':
     try:
