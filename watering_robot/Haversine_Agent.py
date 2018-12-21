@@ -50,8 +50,12 @@ def track():
         read = csv.reader(f)
         for gps_row in read:
             #print(gps_row) # check if gps read properly
-            lat_b = float(gps_row[0]) #unpack list to float
-            lon_b = float(gps_row[1]) 
+            try:
+                lat_b = float(gps_row[0]) #unpack list to float
+                lon_b = float(gps_row[1])
+            except IndexError:
+                ser.write(str.encode('S'))
+                raise Exception('Indexing error...Program termonated')
 
             # main function
             for new_data in gps_socket:
@@ -118,6 +122,7 @@ def track():
                     print("Start Moving to next checkpoint\n")
                     time.sleep(1)
         else:
+            ser.write(str.encode('S'))
             os.system('cls||clear')
             print('\n==== End of lines ====')
             time.sleep(1)
