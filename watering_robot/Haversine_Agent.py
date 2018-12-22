@@ -103,6 +103,12 @@ def track():
                     time.sleep(0.3)
                     print("Serial_STOP")
                     time.sleep(0.3)
+                    for target in range(10):
+                        ser.write(str.encode('O'))
+                        print("watering"+"."*target, end="\r")
+                        ser.write(str.encode('P'))
+                        time.sleep(0.8)
+                    time.sleep(0.3)
                     print("\nClassification palm Tree :"+ str(k))
                     time.sleep(0.3)
                     #classify_edit.main()
@@ -117,12 +123,12 @@ def track():
                     time.sleep(1)
                     print("Start Moving to next checkpoint\n")
                     time.sleep(1)
-            else:
-                ser.write(str.encode('S'))
-                os.system('cls||clear')
-                print('\n==== End of lines ====')
-                time.sleep(1)
-                print('\nFinished\n')
+        else:
+            ser.write(str.encode('S'))
+            os.system('cls||clear')
+            print('\n==== End of lines ====')
+            time.sleep(1)
+            print('\nFinished\n')
 
 if __name__ == '__main__':
     try:
