@@ -25,7 +25,7 @@ SOFTWARE.
 import math
 import time
 import csv
-import torch
+#import torch
 #import classify_edit
 import sys
 import os
@@ -46,12 +46,19 @@ def main():
     in_lat = 10.725450
     in_lon = 99.375350
     k = 1
-    with open('watering_robot/lat_lon.csv', newline='') as f:
+    with open('watering_robot/lat_lon_test.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
             print(gps_row) # check if gps read properly
-            lat_b = float(gps_row[0]) #unpack list to float
-            lon_b = float(gps_row[1]) 
+            try:
+                lat_b = float(gps_row[0]) #unpack list to float
+                lon_b = float(gps_row[1])
+            except IndexError as identifier:
+                os.system('cls||clear')
+                print('Indexing Error')
+                #ser.write(str.encode('S'))
+                print('Serial_STOP')
+                break
             # main function
             while (distance > 6):            
                 lat_A = math.radians(in_lat)
@@ -73,7 +80,7 @@ def main():
                 in_lon += 0.0000005
                 time.sleep(0.08)
                 #ser.write(str.encode('M'))
-
+ 
             else:
                 #ser.write(str.encode('S'))
                 os.system('cls||clear')
