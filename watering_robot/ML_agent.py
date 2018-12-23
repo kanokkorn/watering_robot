@@ -43,10 +43,10 @@ def main():
     distance = 10
     earth_radius = 6371e3
 
-    in_lat = 10.725450
-    in_lon = 99.375350
+    in_lat = 10.724330
+    in_lon = 99.374710
     k = 1
-    with open('watering_robot/lat_lon_test.csv', newline='') as f:
+    with open('watering_robot/lat_lon.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
             print(gps_row) # check if gps read properly
@@ -60,7 +60,7 @@ def main():
                 print('Serial_STOP')
                 break
             # main function
-            while (distance > 6):            
+            while (distance > 5):            
                 lat_A = math.radians(in_lat)
                 lat_B = math.radians(lat_b)
                 del_lat = math.radians(lat_b-(in_lat))

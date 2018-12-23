@@ -61,7 +61,7 @@ def track():
 
             # main function
             for new_data in gps_socket:
-                if (new_data and distance > 5):
+                while (new_data and distance > 5):
                     data_stream.unpack(new_data)
                     #print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
                     
@@ -93,7 +93,7 @@ def track():
                     print("Distance: ", distance, " Status : Running")
                     ser.write(str.encode('M'))
                     
-                elif (new_data and distance < 5 ):
+                else:
 
                     ser.write(str.encode('S'))
                     os.system('cls||clear')
@@ -131,6 +131,7 @@ def track():
             print('\nFinished\n')
 
 if __name__ == '__main__':
+    
     try:
         track()
     except KeyboardInterrupt:

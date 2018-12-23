@@ -1,37 +1,16 @@
 import serial
-import sys, time
-import comm
-# global variable
-joy_val = ()
-
-def forward():
-    comm.ser("Forward")
-    time.sleep(0.03)
-    return
-def backward():
-    comm.ser("Backward")
-    time.sleep(0.03)
-    return
-def left():
-    comm.ser("Left")
-    time.sleep(0.03)
-    return
-def right():
-    comm.ser("Right")
-    time.sleep(0.03)
-    return
+import time
+ser = serial.Serial('/dev/ttyUSB0', 9600)
 def main():
-    if joy_val < 0 & j_val >= -1:
-        left()
-        return
-    elif joy_val > 0 & j_val <= 1:
-        right()
-        return
-    elif expression:
-        pass
-    elif expression:
-        pass
-# testing
-if __name__ == "__main__":
-    main()
-
+    sig_in = str.encode(input(str("Press: ")))
+    while (sig_in != 0):
+        ser.write(sig_in)
+    else:
+        ser.write(str.encode('S'))
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        ser.write(str.encode('S'))
+        print('Serial_STOP')
+        raise Exception('Interrupt...Program terminated.')

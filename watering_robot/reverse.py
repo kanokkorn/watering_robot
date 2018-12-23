@@ -2,7 +2,7 @@ import serial
 import time
 ser = serial.Serial('/dev/ttyUSB0', 9600)
 def main():
-    for i in range(0, 10):
+    for i in range(0, 100):
         ser.write(str.encode('B'))
         time.sleep(1)
     ser.write(str.encode('S'))
