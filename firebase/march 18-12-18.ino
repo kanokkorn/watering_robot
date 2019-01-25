@@ -202,7 +202,6 @@ String NowString()
         time_t now = time(nullptr);
         struct tm* newtime = localtime(&now);
         String myyear = String(newtime->tm_year + 1900);
-        //ถ้าปียังเป็นปี 1970 ให้ดึงค่าเวลาใหม่ พยายามสูงสุด 4 ครั้ง
         while(myyear == "2018" && getcount <= 4) 
         {
          time_t now = time(nullptr);

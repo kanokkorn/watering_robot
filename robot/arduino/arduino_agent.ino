@@ -16,8 +16,8 @@ const int LeftMotorBackward = 9;    // IN4
 #define CW 4  //CW is defined as pin #4//
 #define CCW 5 //CCW is defined as pin #5//
 
-int LmotorSpeed = (255*3)/4; //set motor speed to max speed
-int RmotorSpeed = (255*3)/4; //set motor speed to max speed
+int8_t LmotorSpeed = (255*3)/4; //set motor speed to max speed
+int8_t RmotorSpeed = (255*3)/4; //set motor speed to max speed
 
 
 //define the servo name
