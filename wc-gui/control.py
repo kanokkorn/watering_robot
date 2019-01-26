@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from tkinter import ttk
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
