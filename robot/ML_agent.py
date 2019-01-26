@@ -1,32 +1,10 @@
-'''
-Copyright (c) [2018] [Kanokkorn]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-'''
+#!/usr/bin/env python3
 # import modules 
 #from gps3 import gps3
 #import serial
 import math
 import time
 import csv
-#import torch
-#import classify_edit
 import sys
 import os
 # setup gps socket
@@ -42,11 +20,11 @@ def main():
     # prefix parameter for test
     distance = 10
     earth_radius = 6371e3
-
     in_lat = 10.724330
     in_lon = 99.374710
     k = 1
-    with open('watering_robot/lat_lon.csv', newline='') as f:
+
+    with open('./watering_robot/lat_lon.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
             print(gps_row) # check if gps read properly
@@ -61,17 +39,8 @@ def main():
                 break
             # main function
             while (distance > 5):            
-                lat_A = math.radians(in_lat)
-                lat_B = math.radians(lat_b)
-                del_lat = math.radians(lat_b-(in_lat))
-                del_lon = math.radians(lon_b-(in_lon))
-                a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(lat_A)*math.cos(lat_B)*(math.sin(del_lon/2)*math.sin(del_lon/2))
-                # check if equal zero
-                try:
-                    c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
-                except ValueError:
-                    print("No Value")
-                distance = earth_radius*c        
+                
+                distance = h_sin(in_lat, in_lon, lat_b, lon_b)       
                 os.system('cls||clear')
                 print("Distance: ", distance, "\nStatus : Running")
                 
@@ -111,6 +80,20 @@ def main():
             time.sleep(0.5)
             print('\nFinished\n')
 
+def h_sin(in_lat, in_lon, lat_b, lon_b):
+    earth_radius = 6371e3
+    lat_A = math.radians(in_lat)    #convert incoming latitude to rad
+    lat_B = math.radians(lat_b)     #convert store latitude to rad
+    del_lat = math.radians(lat_b-(in_lat))
+    del_lon = math.radians(lon_b-(in_lon))
+    a = (math.sin(del_lat/2)*math.sin(del_lat/2))+math.cos(del_lat*math.cos(lat_B))*(math.sin(del_lon/2)*math.sin(del_lon/2))
+
+    try:
+        c = 2*math.atan2(math.sqrt(a), math.sqrt((1-a)))
+    except ValueError:
+        print("No Value")
+    return earth_radius*c
+    
 if __name__ == '__main__':
     
     try:
