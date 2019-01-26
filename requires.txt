@@ -5,3 +5,4 @@ opencv-python
 scipy
 flask
 matplotlib
+gps3
