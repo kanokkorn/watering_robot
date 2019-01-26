@@ -1,4 +1,4 @@
-# Watering Robot (aka. SMART ROBOT v1)
+# wc-bot(aka. SMART ROBOT v1)
 
 Main objective:
 
@@ -9,7 +9,6 @@ Main objective:
 
 ## Watering
 
-Autonomous robot follow gps plan
 
 ## Palm tree analysis
 
