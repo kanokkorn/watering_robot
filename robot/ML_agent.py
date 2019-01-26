@@ -24,7 +24,7 @@ def main():
     in_lon = 99.374710
     k = 1
 
-    with open('./watering_robot/lat_lon.csv', newline='') as f:
+    with open('robot/lat_lon.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
             print(gps_row) # check if gps read properly
@@ -42,7 +42,7 @@ def main():
                 
                 distance = h_sin(in_lat, in_lon, lat_b, lon_b)       
                 os.system('cls||clear')
-                print("Distance: ", distance, "\nStatus : Running")
+                print("Distance : ", "{0:.4} meter".format(distance), "\nStatus : Running")
                 
                 #print("Serial_MOVE")
                 in_lat += 0.0000005
@@ -55,7 +55,7 @@ def main():
                 os.system('cls||clear')
                 print('==== Checkpoint ', k," start ====")
                 time.sleep(0.3)
-                print("\nDistance: ", distance, " Status : Stop")
+                print("\nDistance offset: ", "{0:.4} meter".format(distance), " Status : Stop")
                 time.sleep(0.3)
                 #print("Serial_STOP")
                 time.sleep(0.3)
