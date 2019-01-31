@@ -46,7 +46,7 @@ def track():
     in_lat = 10.725450
     in_lon = 99.375350
     k = 1
-    with open('watering_robot/lat_lon.csv', newline='') as f:
+    with open('robot/lat_lon.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
             #print(gps_row) # check if gps read properly
@@ -123,12 +123,12 @@ def track():
                     time.sleep(1)
                     print("Start Moving to next checkpoint\n")
                     time.sleep(1)
-        else:
-            ser.write(str.encode('S'))
-            os.system('cls||clear')
-            print('\n==== End of lines ====')
-            time.sleep(1)
-            print('\nFinished\n')
+            else:
+                ser.write(str.encode('S'))
+                os.system('cls||clear')
+                print('\n==== End of lines ====')
+                time.sleep(1)
+                print('\nFinished\n')
 
 if __name__ == '__main__':
     
