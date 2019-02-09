@@ -26,7 +26,7 @@ import serial
 import math
 import sys
 
-ser = serial.Serial('/dev/ttyUSB0', 9600)
+#ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
 data_stream = gps3.DataStream()
 gps_socket.connect()
@@ -65,13 +65,13 @@ for new_data in gps_socket:
             if (distance > 3):
                 sys.stdout.write("\r distance: %f \n" %distance)
                 sys.stdout.write("\r MOVE")
-                ser.write(str.encode('M'))
+                #ser.write(str.encode('M'))
                 sys.stdout.write("\r ==================================== \n")
                 sys.stdout.flush()
             elif (distance < 3 and distance != 0):
                 sys.stdout.write("\r distance: %f \n" %distance)
                 sys.stdout.write("\r STOP")
-                ser.write(str.encode('S'))
+                #ser.write(str.encode('S'))
                 sys.stdout.write("\r ==================================== \n")
                 sys.stdout.flush()
                 break
