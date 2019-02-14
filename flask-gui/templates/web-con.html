@@ -12,16 +12,24 @@
         Press the button below to start the automatic working...
     </h3>
     <h2>
-        <input type="button" id='script' name="scriptbutton" value=" Run Script " onclick="goPython()">
+            <div class='container'>
+                    <h3>Test</h3>
+                        <form>
+                            <a href=# id=test><button class='btn btn-default'>Start</button></a>
+                        </form>
+                
+                </div>
     </h2>
-    <script>
-            function goPython(){
-                $.ajax({
-                  url: "fwd.py",
-                 context: document.body
-                }).done(function() {
-                 alert('finished python script');;
-                });
-            }
-        </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type=text/javascript>
+        $(function() {
+          $('a#test').bind('click', function() {
+            $.getJSON('/background_process_test',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+    </script>
 </body>
