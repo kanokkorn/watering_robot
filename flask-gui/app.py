@@ -4,9 +4,12 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template('web-con.html')
-@app.route('/background_process_test')
-def background_process_test():
-    fwd()
-    return ("nothing")
+
+@app.route("/forward/", methods=['POST'])
+def move_forward():
+    fwd
+    forward_message = "Moving Forward..."
+    return render_template('web-con.html', message=forward_message);
+
 if __name__ == '__main__':
-    app.run(debug=True, host="172.16.173.2")
+    app.run(debug=True)
