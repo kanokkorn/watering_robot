@@ -8,7 +8,7 @@ def contact():
     if request.method == 'POST':
         if request.form['submit_button'] == 'Do Something':
             print("Start the process...")
-            fwd()
+            fwd
         else:
             pass # unknown
     elif request.method == 'GET':
