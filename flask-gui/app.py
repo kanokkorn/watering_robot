@@ -1,5 +1,7 @@
 from flask import Flask, render_template
-import fwd
+import serial
+ser = serial.Serial('/dev/ttyUSB0', 9600)
+
 app = Flask(__name__)
 @app.route('/')
 def home():
@@ -7,8 +9,9 @@ def home():
 
 @app.route("/forward/", methods=['POST'])
 def move_forward():
-    fwd
-    forward_message = "Moving Forward..."
+    for i in range(3):
+        ser.write(str.encode('M'))
+        time.sleep(1)
     return render_template('web-con.html', message=forward_message);
 
 if __name__ == '__main__':
