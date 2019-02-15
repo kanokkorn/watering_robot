@@ -14,7 +14,7 @@ def move_forward():
         print("Moving forward "+str(i)+" sec")
         #ser.write(str.encode('M'))
         time.sleep(1)
-    return render_template('web-con.html');
+    return render_template('fin.html');
 
 @app.route("/backward/", methods=['POST'])
 def move_backward():
