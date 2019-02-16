@@ -28,7 +28,6 @@ def magnet_test():
     # Read data back from 0x01(1), 6 bytes
     # X-Axis MSB, X-Axis LSB, Y-Axis MSB, Y-Axis LSB, Z-Axis MSB, Z-Axis LSB
     data = bus.read_i2c_block_data(0x0E, 0x01, 6)
-    mag_val(data[1], data[3, data[5]])
     # Convert the data
     xMag = data[0] * 256 + data[1]
     if xMag > 32767 :
