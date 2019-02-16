@@ -83,6 +83,7 @@ def magnet_test():
 
         correct_x = 2
         correct_y = 3
+        correct_z = 4
         print("Division by zero")
         pass
 
