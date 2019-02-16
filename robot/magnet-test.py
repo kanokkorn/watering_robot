@@ -57,5 +57,5 @@ def magnet_main():
 
 if __name__ == "__main__":
     for x in range(10000):
-        magnet_main
+        magnet_main()
         time.sleep(0.2)
