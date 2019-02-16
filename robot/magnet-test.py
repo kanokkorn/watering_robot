@@ -45,20 +45,14 @@ def magnet_test():
     y_axis[0] = yMag
     z_axis[0] = zMag
 
-    if x_axis[0] < x_axis[1]:
-        x_axis[1] = xMag
-    else:
-        x_axis[0] = xMag
+    x_axis[1] = max(x_axis)
+    x_axis[0] = min(x_axis)
     
-    if y_axis[0] < y_axis[1]:
-        y_axis[1] = yMag
-    else:
-        y_axis[0] = yMag
-    
-    if z_axis[0] < z_axis[1]:
-        z_axis[1] = zMag
-    else:
-        z_axis[0] = zMag
+    y_axis[1] = max(y_axis)
+    y_axis[0] = min(y_axis)
+
+    z_axis[1] = max(z_axis)
+    z_axis[0] = min(z_axis)
 
     avg_x = (x_axis[1] - x_axis[0])/2
     avg_y = (y_axis[1] - y_axis[0])/2
