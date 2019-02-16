@@ -27,7 +27,7 @@ class compass(object):
 
         try:
             self.bus            = smbus.SMBus(self.busNumber)
-        except Exception, e:
+        except Exception:
             logging.error('couldn\'t open bus: {0}'.format(e))
         #Init code taken from the XloBorg driver
         #https://www.piborg.org/xloborg
@@ -40,8 +40,8 @@ class compass(object):
             #pylint: disable=unused-variable
             byte = bus.read_byte_data(addressCompass, 1)
             logging.debug('Found compass at {0}'.format(addressCompass))
-        except Exception ,e:
-            logging.error('Missing compass at {0} with error: {1}'.format(addressCompass, e))
+        except Exception:
+            logging.error('Missing compass at {0} with error: {1}'.format(addressCompass))
 
         #warm up the compass
         register = 0x11             # CTRL_REG2
@@ -50,7 +50,7 @@ class compass(object):
         data |= (0 << 5)            # Disable reset cycle
         try:
             bus.write_byte_data(addressCompass, register, data)
-        except Exception, e:
+        except Exception:
             logging.error('Failed sending CTRL_REG2: {0}'.format(e))
 
         # System operation
@@ -62,7 +62,7 @@ class compass(object):
         data |= (1 << 0)            # Active mode
         try:
             bus.write_byte_data(addressCompass, register, data)
-        except Exception, e:
+        except Exception:
             logging.error('Failed sending CTRL_REG1! {0}'.format(e))
 
 
@@ -80,7 +80,7 @@ class compass(object):
 
 
             #print self.bus.read_i2c_block_data(self.addressCompass, 0, 18)
-        except Exception, e:
+        except Exception:
             logging.error('Unable to read compass: {0}'.format(e))
             return False
 
@@ -142,7 +142,7 @@ class compass(object):
                     change = True
                 if change:
                     logging.info('Calibration Update:')
-                    print json.dumps(calibrations, indent=2)
+                    print (json.dumps(calibrations, indent=2))
                 time.sleep(0.1)
             except KeyboardInterrupt:
                 logging.debug('saving calibration')
@@ -180,7 +180,7 @@ class compass(object):
             # we are good
             logging.debug('good calibrations')
             calibration = json.loads(calibration)
-            print calibration
+            print (calibration)
             self.calibrations = calibration
         else:
             logging.error('compass calibration file checksum mismatch')
