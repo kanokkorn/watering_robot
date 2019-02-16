@@ -11,9 +11,9 @@ import math
 
 def magnet_test():
 
-    x_axis = [0, 0]
-    y_axis = [0, 0]
-    z_axis = [0, 0]
+    x_axis = [0, 1]
+    y_axis = [0, 1]
+    z_axis = [0, 1]
     # Get I2C bus
     bus = smbus.SMBus(1)
 
@@ -41,18 +41,24 @@ def magnet_test():
     if zMag > 32767 :
     	zMag -= 65536
     
-    x_axis[0], x_axis[1]  = xMag
-    y_axis[0], y_axis[1] = yMag
-    z_axis[0], z_axis[1] = zMag
-
-    x_axis[1] = max(x_axis)
-    x_axis[0] = min(x_axis)
+    x_axis[0] = xMag
+    y_axis[0] = yMag
+    z_axis[0] = zMag
     
-    y_axis[1] = max(y_axis)
-    y_axis[0] = min(y_axis)
+    if x_axis[0] > x_axis[1]:
+        x_axis[1] = x_axis[0]
+    else:
+        pass
 
-    z_axis[1] = max(z_axis)
-    z_axis[0] = min(z_axis)
+    if y_axis[0] > y_axis[1]:
+        y_axis[1] = y_axis[0]
+    else:
+        pass
+    
+    if y_axis[0] > y_axis[1]:
+        y_axis[1] = y_axis[0]
+    else:
+        pass
 
     avg_x = (x_axis[1] - x_axis[0])/2
     avg_y = (y_axis[1] - y_axis[0])/2
