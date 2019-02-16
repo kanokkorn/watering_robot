@@ -41,9 +41,9 @@ def magnet_test():
     if zMag > 32767 :
     	zMag -= 65536
     
-    x_axis[0] = xMag
-    y_axis[0] = yMag
-    z_axis[0] = zMag
+    x_axis[0], x_axis[1]  = xMag
+    y_axis[0], y_axis[1] = yMag
+    z_axis[0], z_axis[1] = zMag
 
     x_axis[1] = max(x_axis)
     x_axis[0] = min(x_axis)
