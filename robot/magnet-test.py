@@ -78,10 +78,14 @@ def magnet_test():
         correct_x = (xMag - off_x) * scale_x
         correct_y = (yMag - off_y) * scale_y
         correct_z = (zMag - off_z) * scale_z
+    
     except ZeroDivisionError:
+
+        correct_x = 2
+        correct_y = 3
         print("Division by zero")
         pass
-        
+
     mag_angle = math.degrees(math.atan2(correct_y, correct_x))
 
     os.system('cls||clear')
