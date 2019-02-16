@@ -7,9 +7,13 @@
 import smbus
 import time
 import os
+import math
 
 def magnet_test():
 
+    x_axis = [0, 0]
+    y_axis = [0, 0]
+    z_axis = [0, 0]
     # Get I2C bus
     bus = smbus.SMBus(1)
 
@@ -24,7 +28,7 @@ def magnet_test():
     # Read data back from 0x01(1), 6 bytes
     # X-Axis MSB, X-Axis LSB, Y-Axis MSB, Y-Axis LSB, Z-Axis MSB, Z-Axis LSB
     data = bus.read_i2c_block_data(0x0E, 0x01, 6)
-
+    mag_val(data[1], data[3, data[5]])
     # Convert the data
     xMag = data[0] * 256 + data[1]
     if xMag > 32767 :
@@ -37,18 +41,57 @@ def magnet_test():
     zMag = data[4] * 256 + data[5]
     if zMag > 32767 :
     	zMag -= 65536
+    
+    x_axis[0] = xMag
+    y_axis[0] = yMag
+    z_axis[0] = zMag
 
-    # Output data to screen
+    if x_axis[0] < x_axis[1]:
+        xMag = x_axis[1]
+    else:
+        xMag = x_axis[0]
+    
+    if y_axis[0] < y_axis[1]:
+        yMag = y_axis[1]
+    else:
+        yMag = y_axis[0]
+    
+    if z_axis[0] < z_axis[1]:
+        zMag = z_axis[1]
+    else:
+        zMag = z_axis[0]
 
-    print ("Magnetic field in X-Axis : %d" %xMag)
-    print ("Magnetic field in Y-Axis : %d" %yMag)
-    print ("Magnetic field in Z-Axis : %d" %zMag)
+    avg_x = (x_axis[1] - x_axis[0])/2
+    avg_y = (y_axis[1] - y_axis[0])/2
+    avg_z = (z_axis[1] - z_axis[0])/2
+
+    off_x = (x_axis[1] + x_axis[0])/2
+    off_y = (y_axis[1] + y_axis[0])/2
+    off_z = (z_axis[1] + z_axis[0])/2
+
+    delte_avg = (avg_x + avg_y + avg_z)/3
+    
+    scale_x = delte_avg / avg_x
+    scale_y = delte_avg / avg_y
+    scale_z = delte_avg / avg_z
+
+    correct_x = (xMag - off_x) * scale_x
+    correct_y = (yMag - off_y) * scale_y
+    correct_z = (zMag - off_z) * scale_z
+
+    mag_angle = math.degrees(math.atan2(correct_y, correct_x))
+
     os.system('cls||clear')
+    print ("Magnetic field in X-Axis : %d" %correct_x)
+    print ("Magnetic field in Y-Axis : %d" %correct_y)
+    print ("Magnetic field in Z-Axis : %d" %correct_z)
+
+    print("\nAngle: %d" %mag_angle)
 
 if __name__ == "__main__":
     
     #test for 100 times
-    for x in range(100):
+    for x in range(10000):
         magnet_test()
         time.sleep(0.2)
 
