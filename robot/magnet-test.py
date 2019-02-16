@@ -160,7 +160,7 @@ class compass(object):
                 calibrationFile.write('\n')
                 calibrationFile.write(checksum)
                 calibrationFile.write('\n')
-        except Exception, e:
+        except Exception:
             logging.error('unable to save calibration: {0}'.format(e))
 
     def loadCalibration(self):
@@ -171,7 +171,7 @@ class compass(object):
             with open(self.calibrationFile) as calibrationFile:
                 calibration = calibrationFile.readline()
                 checksum    = calibrationFile.readline()
-        except Exception, e:
+        except Exception:
             logging.error('Unable to open com[ass calibration: {0}'.format(e))
 
         calibration = calibration.rstrip()
