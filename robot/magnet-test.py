@@ -46,19 +46,19 @@ def magnet_test():
     z_axis[0] = zMag
 
     if x_axis[0] < x_axis[1]:
-        xMag = x_axis[1]
+        x_axis[1] = xMag
     else:
-        xMag = x_axis[0]
+        x_axis[0] = xMag
     
     if y_axis[0] < y_axis[1]:
-        yMag = y_axis[1]
+        y_axis[1] = yMag
     else:
-        yMag = y_axis[0]
+        y_axis[0] = yMag
     
     if z_axis[0] < z_axis[1]:
-        zMag = z_axis[1]
+        z_axis[1] = zMag
     else:
-        zMag = z_axis[0]
+        z_axis[0] = zMag
 
     avg_x = (x_axis[1] - x_axis[0])/2
     avg_y = (y_axis[1] - y_axis[0])/2
@@ -68,11 +68,11 @@ def magnet_test():
     off_y = (y_axis[1] + y_axis[0])/2
     off_z = (z_axis[1] + z_axis[0])/2
 
-    delte_avg = (avg_x + avg_y + avg_z)/3
+    delta_avg = (avg_x + avg_y + avg_z)/3
     
-    scale_x = delte_avg / avg_x
-    scale_y = delte_avg / avg_y
-    scale_z = delte_avg / avg_z
+    scale_x = delta_avg / avg_x
+    scale_y = delta_avg / avg_y
+    scale_z = delta_avg / avg_z
 
     correct_x = (xMag - off_x) * scale_x
     correct_y = (yMag - off_y) * scale_y
