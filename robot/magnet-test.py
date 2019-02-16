@@ -7,8 +7,9 @@
 import smbus
 import time
 import math
+import os
 
-def __main__():
+def magnet_main():
     # Get I2C bus
     bus = smbus.SMBus(1)
 
@@ -46,6 +47,7 @@ def __main__():
     if yMag == 0 & xMag > 0 : 
         heading = 0.0
 
+    os.system("clear")
     # Output data to screen
     print ("Magnetic field in X-Axis : %d" %xMag)
     print ("Magnetic field in Y-Axis : %d" %yMag)
@@ -55,5 +57,5 @@ def __main__():
 
 if __name__ == "__main__":
     for x in range(10000):
-        __main__
+        magnet_main
         time.sleep(0.2)
