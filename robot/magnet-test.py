@@ -55,8 +55,8 @@ def magnet_test():
     else:
         pass
     
-    if y_axis[0] > y_axis[1]:
-        y_axis[1] = y_axis[0]
+    if z_axis[0] > z_axis[1]:
+        z_axis[1] = z_axis[0]
     else:
         pass
 
