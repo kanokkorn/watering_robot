@@ -60,24 +60,28 @@ def magnet_test():
     else:
         pass
 
-    avg_x = (x_axis[1] - x_axis[0])/2
-    avg_y = (y_axis[1] - y_axis[0])/2
-    avg_z = (z_axis[1] - z_axis[0])/2
+    try: 
+        avg_x = (x_axis[1] - x_axis[0])/2
+        avg_y = (y_axis[1] - y_axis[0])/2
+        avg_z = (z_axis[1] - z_axis[0])/2
 
-    off_x = (x_axis[1] + x_axis[0])/2
-    off_y = (y_axis[1] + y_axis[0])/2
-    off_z = (z_axis[1] + z_axis[0])/2
+        off_x = (x_axis[1] + x_axis[0])/2
+        off_y = (y_axis[1] + y_axis[0])/2
+        off_z = (z_axis[1] + z_axis[0])/2
 
-    delta_avg = (avg_x + avg_y + avg_z)/3
-    
-    scale_x = delta_avg / avg_x
-    scale_y = delta_avg / avg_y
-    scale_z = delta_avg / avg_z
+        delta_avg = (avg_x + avg_y + avg_z)/3
 
-    correct_x = (xMag - off_x) * scale_x
-    correct_y = (yMag - off_y) * scale_y
-    correct_z = (zMag - off_z) * scale_z
+        scale_x = delta_avg / avg_x
+        scale_y = delta_avg / avg_y
+        scale_z = delta_avg / avg_z
 
+        correct_x = (xMag - off_x) * scale_x
+        correct_y = (yMag - off_y) * scale_y
+        correct_z = (zMag - off_z) * scale_z
+    except ZeroDivisionError:
+        print("Division by zero")
+        pass
+        
     mag_angle = math.degrees(math.atan2(correct_y, correct_x))
 
     os.system('cls||clear')
