@@ -111,6 +111,20 @@ def task(distance,count,in_lat, in_lon, lat_b, lon_b):
     print("Start Moving to next checkpoint\n")
     time.sleep(1)
 
+def linear_temp():
+
+    
+
+    pass
+
+def firebase():
+
+    pass
+
+def temp(parameter_list):
+
+    pass
+
 if __name__ == '__main__':
     
     try:
