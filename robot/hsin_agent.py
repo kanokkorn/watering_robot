@@ -42,9 +42,6 @@ def track():
     # prefix parameter
     distance = 10
     earth_radius = 6371e3
-
-    in_lat = 10.725450
-    in_lon = 99.375350
     k = 1
     with open('robot/lat_lon.csv', newline='') as f:
         read = csv.reader(f)
@@ -54,7 +51,7 @@ def track():
                 lat_b = float(gps_row[0]) #unpack list to float
                 lon_b = float(gps_row[1])
             except IndexError:
-                os.system('cls||clear')
+                os.system('clear')
                 raise Exception('Indexing error...Program terminated.')
                 ser.write(str.encode('S'))
                 break 
@@ -89,14 +86,14 @@ def track():
                     except ValueError as identifier:
                         print("No Value")
                     distance = earth_radius*c        
-                    os.system('cls||clear')
+                    os.system('clear')
                     print("Distance: ", distance, " Status : Running")
                     ser.write(str.encode('M'))
                     
                 else:
 
                     ser.write(str.encode('S'))
-                    os.system('cls||clear')
+                    os.system('clear')
                     print('\n==== Checkpoint ', k," start ====")
                     time.sleep(0.3)
                     print("\nDistance: ", distance, " Status : Stop")
@@ -125,7 +122,7 @@ def track():
                     time.sleep(1)
             else:
                 ser.write(str.encode('S'))
-                os.system('cls||clear')
+                os.system('clear')
                 print('\n==== End of lines ====')
                 time.sleep(1)
                 print('\nFinished\n')
