@@ -1,11 +1,10 @@
-
-
 #include <Servo.h> //the library which helps us to control the servo motor
 
 unsigned char incomingByte = 0;
 // set water pump 
 uint8_t water_pump = 2;
 
+unsigned char[3] = {0,0};
 
 // Motor A
 const uint8_t RightMotorForward = 6;    // IN1
@@ -42,7 +41,8 @@ void loop()
 {
   // Check if serial available
   if (Serial.available() > 0) 
-  
+  uint8_t m, n;
+  for 
   {
     int inByte = Serial.read();   
     switch (inByte)
