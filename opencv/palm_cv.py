@@ -1,7 +1,7 @@
 import cv2
 import os, time
 
-cascade = cv2.CascadeClassifier('opencv/cascade.xml')
+cascade = cv2.CascadeClassifier('./cascade.xml')
 cv2.ocl.setUseOpenCL(True)
 cap = cv2.VideoCapture(0)
 
@@ -21,13 +21,9 @@ while 1:
         img_us = cv2.resize(img_rz ,(0,0) , fx = 1.1 , fy = 1.1 )
         cv2.imshow('CV', img_us)
         k = cv2.waitKey(1) & 0xff
-        
         if k == 20:
             break
-
-if __name__ == "__main__":
     
-    cap.release()
-    cv2.destroyAllWindows()
-    pass
+cap.release()
+cv2.destroyAllWindows()
     
