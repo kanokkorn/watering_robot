@@ -42,11 +42,10 @@ def track():
     # prefix parameter
     distance = 10
     earth_radius = 6371e3
-
     in_lat = 10.725450
     in_lon = 99.375350
     k = 1
-    with open('watering_robot/lat_lon.csv', newline='') as f:
+    with open('./lat_lon.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
             #print(gps_row) # check if gps read properly
@@ -113,7 +112,7 @@ def track():
                             in_lon = (99.378788)
 
                     ser.write(str.encode('S'))
-                    os.system('cls||clear')
+                    o[s.system('cls||clear')
                     print('\n==== Checkpoint ', k," start ====")
                     time.sleep(0.3)
                     print("\nDistance: ", distance, " Status : Stop")
@@ -135,6 +134,7 @@ def track():
                     distance = 10
                     in_lat = lat_b
                     in_lon = lon_b
+                    distance = 10
                     print("\n==== Checkpoint", k, " done ====\n")
                     k += 1
                     time.sleep(1)
