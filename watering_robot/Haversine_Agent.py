@@ -94,6 +94,23 @@ def track():
                     ser.write(str.encode('M'))
                     
                 elif (new_data and distance < 5 ):
+                
+                    data_stream.unpack(new_data)
+                    #print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
+                    
+                    if (data_stream.TPV['lat'] == 'n/a') or (data_stream.TPV['lon'] != 'n/a'):
+                        pass
+                    if (data_stream.TPV['lat'] != 'n/a') or (data_stream.TPV['lon'] != 'n/a'):
+                        try:
+                            in_lat = float(data_stream.TPV['lat'])
+                        except ValueError:
+                            print("lat N/A value")
+                            in_lat = (10.712709)
+                        try:
+                            in_lon = float(data_stream.TPV['lon'])
+                        except ValueError:
+                            print("lon N/A value")
+                            in_lon = (99.378788)
 
                     ser.write(str.encode('S'))
                     os.system('cls||clear')
