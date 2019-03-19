@@ -10,7 +10,7 @@ while 1:
     ret, img = cap.read()
     img_rz = cv2.resize(img ,(0,0) , fx = 0.9 , fy = 0.9 )
     gray = cv2.cvtColor(img_rz, cv2.COLOR_BGR2GRAY)
-    palm = cascade.detectMultiScale(gray, 1.3, 5)
+    palm = cascade.detectMultiScale(gray, 1.3, 3)
     
     for (x,y,w,h) in palm:
         
