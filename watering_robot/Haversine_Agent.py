@@ -112,7 +112,7 @@ def track():
                             in_lon = (99.378788)
 
                     ser.write(str.encode('S'))
-                    o[s.system('cls||clear')
+                    os.system('cls||clear')
                     print('\n==== Checkpoint ', k," start ====")
                     time.sleep(0.3)
                     print("\nDistance: ", distance, " Status : Stop")
