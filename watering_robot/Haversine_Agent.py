@@ -140,6 +140,7 @@ def track():
                     time.sleep(1)
                     print("Start Moving to next checkpoint\n")
                     time.sleep(1)
+                    break
         else:
             ser.write(str.encode('S'))
             os.system('cls||clear')
