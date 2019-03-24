@@ -25,7 +25,7 @@ def main():
     in_lon = 99.378673
     count = 1
 
-    with open('robot/lat_lon.csv', newline='') as f:
+    with open('./lat_lon.csv', newline='') as f:
         read = csv.reader(f)
         for gps_row in read:
             
@@ -112,9 +112,7 @@ def task(distance,count,in_lat, in_lon, lat_b, lon_b):
     time.sleep(1)
 
 def linear_temp():
-
     
-
     pass
 
 def firebase():
