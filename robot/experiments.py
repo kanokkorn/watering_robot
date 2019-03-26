@@ -78,7 +78,7 @@ def main():
 
                     distance = h_sin(in_lat, in_lon, lat_b, lon_b) # send value to haversine function  
                     angle = angl(in_lat, in_lon, lat_b, lon_b)     
-                    ser.write(str.encode("M"))
+                    ser.write(str.encode('M'))
                     #os.system('clear')
                     print("Distance : ", "{0:.6} meter".format(distance),"\nAngle : ","{0:.6} Degree".format(angle),"\nHeading : N/A", "\nStatus : Running")
              
