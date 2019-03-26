@@ -42,7 +42,7 @@ def main():
                 
                 os.system('clear')
                 print('Indexing Error')
-                #ser.write(str.encode('S'))
+                ser.write(str.encode('S'))
                 print('Serial_STOP')
                 break
             
@@ -78,7 +78,8 @@ def main():
 
                     distance = h_sin(in_lat, in_lon, lat_b, lon_b) # send value to haversine function  
                     angle = angl(in_lat, in_lon, lat_b, lon_b)     
-                    os.system('clear')
+                    ser.write(str.encode("M"))
+                    #os.system('clear')
                     print("Distance : ", "{0:.6} meter".format(distance),"\nAngle : ","{0:.6} Degree".format(angle),"\nHeading : N/A", "\nStatus : Running")
              
                 # If robot distance is less than offset. Stop running and do the task

@@ -65,7 +65,7 @@ def track():
                     except ValueError as identifier:
                         print("No Value")
                     distance = earth_radius*c        
-                    os.system('clear')
+                    #os.system('clear')
                     print("Distance: ", distance, " Status : Running")
                     ser.write(str.encode('M'))
                     
