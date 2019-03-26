@@ -2,7 +2,7 @@ import serial
 import time
 ser = serial.Serial('/dev/ttyACM0', 9600)
 def main():
-    for i in range():
+    for i in range(20):
         ser.write(str.encode('B'))
         time.sleep(1)
     ser.write(str.encode('S'))
