@@ -1,0 +1,25 @@
+[INFO]:[Robot-Auto]: Started
+[INFO]:[Robot-Auto]: Platform detect : Windows
+[DEBUG]:[Robot-Auto]: Testing Sensor
+[DEBUG]:[Robot-Auto]: Testing GPS
+[DEBUG]:[Robot-Auto]: Test Complete
+[INFO]:[Robot-Auto]: Ended
+[WARNING]:[Robot-Man]: Manual control started
+[WARNING]:[Robot-Man]: Manual control stopped
+[INFO]:[Robot-Auto]: Started
+[INFO]:[Robot-Auto]: Platform detect : Windows
+[DEBUG]:[Robot-Auto]: Testing Sensor
+[DEBUG]:[Robot-Auto]: Testing GPS
+[DEBUG]:[Robot-Auto]: Test Complete
+[INFO]:[Robot-Auto]: Ended
+[WARNING]:[Robot-Man]: Manual control started
+[WARNING]:[Robot-Man]: Manual control stopped
+[WARNING]:[Robot-Man]: Manual control started
+[WARNING]:[Robot-Man]: Manual control started
+[WARNING]:[Robot-Man]: Manual control stopped
+[INFO]:[Robot-Auto]: Started
+[INFO]:[Robot-Auto]: Platform detect : Windows
+[DEBUG]:[Robot-Auto]: Testing Sensor
+[DEBUG]:[Robot-Auto]: Testing GPS
+[DEBUG]:[Robot-Auto]: Test Complete
+[INFO]:[Robot-Auto]: Ended
