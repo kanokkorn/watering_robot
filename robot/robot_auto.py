@@ -50,8 +50,15 @@ def _hsin_():
 
 if __name__ == "__main__":
     
-    logger.info("Started")
-    time.sleep(0.5)
-    platform_chk()
-    test_and_carl()
-    logger.info('Ended')
+    try:
+
+        logger.info("Started")
+        time.sleep(0.5)
+        platform_chk()
+        test_and_carl()
+        logger.info('Ended')
+    
+    except KeyboardInterrupt:
+        raise Exception("Keyboard interrput from user. Control abort")
+        logger.error("Keyboard interrupt!")
+        exit()
