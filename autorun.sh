@@ -1,5 +1,5 @@
-#!/bin/sh
-
-chmod +x /etc/init.d/wc-robot.py
-ln -s /etc/init.d/wc-robot.py /etc/rc.d/
-/var/myscripts/wc-robot.py
+#!/bin/bash
+echo "Update and upgrade packages first" 
+apt update && apt upgrade
+cd watering_robot/robot
+python3 robot_auto.py
