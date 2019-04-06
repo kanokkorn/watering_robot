@@ -1,4 +1,4 @@
-# Watering Bot(aka. SMART ROBOT v1)
+# Watering Bot (aka. SMART ROBOT v.1)
 
 Main objective:
 
@@ -31,3 +31,7 @@ Measure soil humidity, temperature, and air humidity. Collect the data from the 
 ## Usage
 
 Clone this repository and run ```sudo ./autorun.sh``` the program will start and install and update all requires packages. Make sure you have all the packages installed. After that program will ask you how to control the robot.
+
+## License
+
+Watering_robot is under license [MIT](https://github.com/kanokkorn/watering_robot/blob/master/LICENSE)
