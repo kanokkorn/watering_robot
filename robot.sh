@@ -4,18 +4,14 @@ sleep 2
 echo "Update and upgrade packages first..."
 apt -qq update  && apt -qq upgrade && apt -qq autoremove
 echo "Done..."
-#Update python packages 
-echo "Update pip packages."
-sleep 2 
-pip3 install -r requires.txt -- upgrade
 
 #Ask user how to control robot.
 PS3="How do you want to control? :"
-options=("_Auto_" "_Manual_" "Quit")
+options=("Auto" "Manual" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
-        "_Auto_")
+        "Auto")
             sleep 1
             echo "Auto Mode was selected."
             cd robot && python3 robot_auto.py
@@ -24,7 +20,7 @@ do
             break
             ;;
             
-        "_Manual_")
+        "Manual")
             sleep 1
             echo "Manual Mode was selected."
             cd robot && python3 robot_man.py
