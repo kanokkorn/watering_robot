@@ -30,7 +30,7 @@ Measure soil humidity, temperature, and air humidity. Collect the data from the 
 
 ## Usage
 
-Clone this repository and run ```sudo ./autorun.sh``` the program will start and install and update all requires packages. Make sure you have all the packages installed. After that program will ask you how to control the robot.
+Clone this repository and run ```sudo ./robot.sh``` the program will start and install and update all requires packages. Make sure you have all the packages installed. After that program will ask you how to control the robot.
 
 ## License
 
