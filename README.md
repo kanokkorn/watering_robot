@@ -10,11 +10,11 @@ Main objective:
 ### Watering
 
 The robot can navigate autonomously point-by-point by GPS receiver and data from the onboard computer.
-The GPS point also can be edit in GUI and send to the robot via MQTT protocol
+The GPS point also can be edit in GUI and send to the robot via MQTT protocol.
 
 ### Palm tree analysis
 
-Capture pictures of oil palm leaf and detect Oil palm fruits using computer vision and deep learning to determined quality of palm fruit and leaf to prevent disease.\
+Capture pictures of oil palm leaf and detect Oil palm fruits using computer vision and deep learning to determined quality of palm fruit and leaf to prevent disease.<br>
 Picture example 1:
  > <img src="images/tf_palm.jpg" width="600">
 Picture example 2:
@@ -30,7 +30,12 @@ Measure soil humidity, temperature, and air humidity. Collect the data from the 
 
 ## Usage
 
-Clone this repository and run ```sudo ./robot.sh``` the program will start and install and update all requires packages. Make sure you have all the packages installed. After that program will ask you how to control the robot.
+Clone this repository and run ```sudo ./install.sh``` the program will start and install and update all requires packages. Make sure you have all the packages installed.<br>
+After that run ```sudo ./robot.sh``` program will ask you how to control the robot.
+
+## Changing GPS lat, lon 
+
+Type ```nano robot/lat_lon.csv``` and edit the point. The format of data will look like this. ``` 45.155452, 14.475854```
 
 ## License
 
