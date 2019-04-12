@@ -1,8 +1,8 @@
 #!/bin/bash
 echo "Welcome to Autonomous Robot CLI"
 sleep 2
-echo "Update and upgrade packages first..."
-apt -qq update  && apt -qq upgrade && apt -qq autoremove
+echo "Check update before start..."
+yes Y | apt -qq update  && apt -qq upgrade && apt -qq autoremove
 echo "Done..."
 
 #Ask user how to control robot.
