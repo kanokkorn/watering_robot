@@ -7,6 +7,7 @@ import time
 import csv
 import sys
 import os
+import torch
 # setup gps socket
 '''#ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
