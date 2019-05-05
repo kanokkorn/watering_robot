@@ -7,8 +7,8 @@ uint8_t water_pump = 2;
 unsigned char[3] = {0,0};
 
 // Motor A
-const uint8_t RightMotorForward = 6;    // IN1
-const uint8_t RightMotorBackward = 7;   // IN2
+const uint8_t Right_Forward = 6;    // IN1
+const uint8_t Right_Backward = 7;   // IN2
 
 //Motor B
 const uint8_t LeftMotorForward = 8;     // IN3
@@ -25,10 +25,10 @@ void setup()
   
   //motor output
     pinMode(water_pump,OUTPUT);
-    pinMode(RightMotorForward , OUTPUT);
+    pinMode(Right_Forward , OUTPUT);
     pinMode(LeftMotorForward , OUTPUT);
     pinMode(LeftMotorBackward , OUTPUT);
-    pinMode(RightMotorBackward , OUTPUT);
+    pinMode(Right_Backward , OUTPUT);
 
     Serial.begin(9600); 
     
@@ -52,8 +52,8 @@ void loop()
         digitalWrite(water_pump, LOW);
         for(uint8_t analog_val = 0; analog_val < 255 ; analog_val++)
         {
-          analogWrite(RightMotorForward, analog_val);    
-          analogWrite(RightMotorBackward, LOW);
+          analogWrite(Right_Forward, analog_val);    
+          analogWrite(Right_Backward, LOW);
           analogWrite(LeftMotorForward, analog_val);
           analogWrite(LeftMotorBackward, LOW);
           delay(50);
@@ -65,8 +65,8 @@ void loop()
         digitalWrite(analog_val, LOW);
         for(uint8_t analog_val = 0; analog_val < 255 ; analog_val++)
         {
-          analogWrite(RightMotorForward, LOW);    
-          analogWrite(RightMotorBackward, analog_val);
+          analogWrite(Right_Forward, LOW);    
+          analogWrite(Right_Backward, analog_val);
           analogWrite(LeftMotorForward, LOW);
           analogWrite(LeftMotorBackward, analog_val);
           delay(50);
@@ -76,8 +76,8 @@ void loop()
       case 'L':
         
         digitalWrite(water_pump, LOW);
-        digitalWrite(RightMotorForward, LOW);    
-        digitalWrite(RightMotorBackward, HIGH);
+        digitalWrite(Right_Forward, LOW);    
+        digitalWrite(Right_Backward, HIGH);
         digitalWrite(LeftMotorForward, HIGH);
         digitalWrite(LeftMotorBackward, LOW);
 
@@ -86,8 +86,8 @@ void loop()
       case 'R':
 
         digitalWrite(water_pump, LOW); 
-        digitalWrite(RightMotorForward, HIGH);    
-        digitalWrite(RightMotorBackward, LOW);
+        digitalWrite(Right_Forward, HIGH);    
+        digitalWrite(Right_Backward, LOW);
         digitalWrite(LeftMotorForward, LOW);
         digitalWrite(LeftMotorBackward, HIGH);
 
@@ -96,8 +96,8 @@ void loop()
       case 'S':
        
         digitalWrite(water_pump, LOW);
-        digitalWrite(RightMotorForward, LOW);    
-        digitalWrite(RightMotorBackward, LOW);
+        digitalWrite(Right_Forward, LOW);    
+        digitalWrite(Right_Backward, LOW);
         digitalWrite(LeftMotorForward, LOW);
         digitalWrite(LeftMotorBackward, LOW);
 		

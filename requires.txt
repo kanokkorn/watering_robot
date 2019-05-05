@@ -8,3 +8,5 @@ matplotlib
 gps3
 paho-mqtt
 googlemaps
+keyboard
+colorlog

@@ -1,5 +1,0 @@
-{
-    "python.pythonPath": "C:\\Python\\python.exe",
-    "python.formatting.provider": "autopep8",
-    "python.linting.pylintEnabled": false,
-}

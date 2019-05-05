@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 
-from gps3 import gps3
-import serial
+# from gps3 import gps3
+# import serial
 import math
 import time
 import csv
 import sys
 import os
+import torch
 
-# setup arduino serial
-ser = serial.Serial("/dev/ttyUSB0", 9600)
-# set UBLOX GPS Module
+# setup gps socket
+"""#ser = serial.Serial('/dev/ttyUSB0', 9600)
 gps_socket = gps3.GPSDSocket()
 data_stream = gps3.DataStream()
 gps_socket.connect()
 gps_socket.watch()
+"""
 
-# main function
+# read csv files
 def main():
 
     # assign parameter for testing
@@ -32,74 +33,41 @@ def main():
 
             # check if gps read properly
             print(gps_row)
-
             try:
-
                 lat_b = float(gps_row[0])  # unpack list to float
                 lon_b = float(gps_row[1])
-
             except IndexError as identifier:
-
-                os.system("clear")
+                os.system("cls||clear")
                 print("Indexing Error")
-                ser.write(str.encode("S"))
+                # ser.write(str.encode('S'))
                 print("Serial_STOP")
                 break
 
             # If robot distance is more than offset. keep running
-            for new_data in gps_socket:
+            while distance > 5:
 
-                while new_data and distance > 5:
+                # ser.write(str.encode('M'))
+                distance = h_sin(in_lat, in_lon, lat_b, lon_b)
+                angle = angl(in_lat, in_lon, lat_b, lon_b)
+                os.system("cls||clear")
+                print(
+                    "Distance : ",
+                    "{0:.6} meter".format(distance),
+                    "\nAngle : ",
+                    "{0:.6} Degree".format(angle),
+                    "\nHeading : N/A",
+                    "\nStatus : Running",
+                )
 
-                    data_stream.unpack(new_data)
-                    # print('Altitude = ', data_stream.TPV['lat'], 'Latitude = ', data_stream.TPV['lon'])
+                in_lat += 0.000002
+                in_lon += 0.000002
+                time.sleep(0.08)
 
-                    if (data_stream.TPV["lat"] == "n/a") or (
-                        data_stream.TPV["lon"] != "n/a"
-                    ):
-                        pass
-                    if (data_stream.TPV["lat"] != "n/a") or (
-                        data_stream.TPV["lon"] != "n/a"
-                    ):
-
-                        try:
-
-                            in_lat = float(data_stream.TPV["lat"])
-
-                        except ValueError:  # If get N/A value. Assign some value to prevent zero division
-
-                            print("lat N/A value")
-                            in_lat = 10.712709
-
-                        try:
-
-                            in_lon = float(data_stream.TPV["lon"])
-
-                        except ValueError:  # If get N/A value. Assign some value to prevent zero division
-
-                            print("lon N/A value")
-                            in_lon = 99.378788
-
-                    distance = h_sin(
-                        in_lat, in_lon, lat_b, lon_b
-                    )  # send value to haversine function
-                    angle = angl(in_lat, in_lon, lat_b, lon_b)
-                    ser.write(str.encode("M"))
-                    # os.system('clear')
-                    print(
-                        "Distance : ",
-                        "{0:.6} meter".format(distance),
-                        "\nAngle : ",
-                        "{0:.6} Degree".format(angle),
-                        "\nHeading : N/A",
-                        "\nStatus : Running",
-                    )
-
-                # If robot distance is less than offset. Stop running and do the task
-                else:
-                    task(distance, count, in_lat, in_lon, lat_b, lon_b)
+            # If robot distance is less than offset. Stop running and do task
+            else:
+                task(distance, count, in_lat, in_lon, lat_b, lon_b)
         else:
-            os.system("clear")
+            os.system("cls||clear")
             print("==== End of lines ====")
             time.sleep(0.5)
             print("\nFinished\n")
@@ -136,7 +104,7 @@ def angl(in_lat, in_lon, lat_b, lon_b):
 
 
 def task(distance, count, in_lat, in_lon, lat_b, lon_b):
-    os.system("clear")
+    os.system("cls||clear")
     print("==== Checkpoint ", count, " start ====")
     time.sleep(0.2)
     print("\nDistance offset: ", "{0:.4} meter".format(distance), "Status : Stop")
@@ -158,6 +126,21 @@ def task(distance, count, in_lat, in_lon, lat_b, lon_b):
     time.sleep(0.2)
     print("Start Moving to next checkpoint\n")
     time.sleep(1)
+
+
+def linear_temp():
+
+    pass
+
+
+def firebase():
+
+    pass
+
+
+def temp(parameter_list):
+
+    pass
 
 
 if __name__ == "__main__":

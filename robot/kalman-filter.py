@@ -1,63 +1,51 @@
-# Kalman filter example demo in Python
-
-# A Python implementation of the example given in pages 11-15 of "An
-# Introduction to the Kalman Filter" by Greg Welch and Gary Bishop,
-# University of North Carolina at Chapel Hill, Department of Computer
-# Science, TR 95-041,
-# https://www.cs.unc.edu/~welch/media/pdf/kalman_intro.pdf
-
-# by Andrew D. Straw
-
-import numpy as np
+#!/usr/bin/env python3
+import math
 import matplotlib.pyplot as plt
+import numpy as np
+from random import randint
 
-plt.rcParams['figure.figsize'] = (10, 8)
+measurements = [5, 6, 7, 9, 10]
+motions = [1, 1, 2, 1, 1]
+measurements_sig = 5
+motion_sig = 6
+mu = 0
+sig = 100000
 
-# intial parameters
-n_iter = 50
-sz = (n_iter,) # size of array
-x = -0.37727 # truth value (typo in example at top of p. 13 calls this z)
-z = np.random.normal(x,0.1,size=sz) # observations (normal about x, sigma=0.1)
 
-Q = 1e-5 # process variance
+def f(mu, sigma, x):
+    coefficient = 1.0 / math.sqrt(2.0 * math.pi * sigma)
+    exponential = math.exp(-0.5 * (x - mu) ** 2 / sigma)
+    return coefficient * exponential
 
-# allocate space for arrays
-xhat=np.zeros(sz)      # a posteri estimate of x
-P=np.zeros(sz)         # a posteri error estimate
-xhatminus=np.zeros(sz) # a priori estimate of x
-Pminus=np.zeros(sz)    # a priori error estimate
-K=np.zeros(sz)         # gain or blending factor
 
-R = 0.1**2 # estimate of measurement variance, change to see effect
+def update(mean1, var1, mean2, var2):
+    new_mean = (var2 * mean1 + var1 * mean2) / (var2 + var1)
+    new_var = 1 / (1 / var2 + 1 / var1)
+    return [new_mean, new_var]
 
-# intial guesses
-xhat[0] = 0.0
-P[0] = 1.0
 
-for k in range(1,n_iter):
-    # time update
-    xhatminus[k] = xhat[k-1]
-    Pminus[k] = P[k-1]+Q
+def predict(mean1, var1, mean2, var2):
+    new_mean = mean1 + mean2
+    new_var = var1 + var2
+    return [new_mean, new_var]
 
-    # measurement update
-    K[k] = Pminus[k]/( Pminus[k]+R )
-    xhat[k] = xhatminus[k]+K[k]*(z[k]-xhatminus[k])
-    P[k] = (1-K[k])*Pminus[k]
 
-plt.figure()
-plt.plot(z,'k+',label='noisy measurements')
-plt.plot(xhat,'b-',label='a posteri estimate')
-plt.axhline(x,color='g',label='truth value')
-plt.legend()
-plt.title('Estimate vs. iteration step', fontweight='bold')
-plt.xlabel('Iteration')
-plt.ylabel('Voltage')
+for n in range(len(measurements)):
+    mu, sig = update(mu, sig, measurements[n], measurements_sig)
+    print("Update: [{}, {}]".format(mu, sig))
+    mu, sig = predict(mu, sig, motions[n], motion_sig)
+    print("Predict: [{}, {}]".format(mu, sig))
 
-plt.figure()
-valid_iter = range(1,n_iter) # Pminus not valid at step 0
-plt.plot(valid_iter,Pminus[valid_iter],label='a priori error estimate')
-plt.title('Estimated $\it{\mathbf{a \ priori}}$ error vs. iteration step', fontweight='bold')
-plt.xlabel('Iteration')
-plt.ylabel('$(Voltage)^2$')
-plt.setp(plt.gca(),'ylim',[0,.01])
+print("\n")
+print("Final result: [{}, {}]".format(mu, sig))
+
+mu = mu
+sigma2 = sig
+
+x_axis = np.arange(-20, 20, 0.1)
+
+g = []
+for x in x_axis:
+    g.append(f(mu, sigma2, x))
+plt.plot(x_axis, g)
 plt.show()
