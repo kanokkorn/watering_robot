@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import time
+import keyboard
 import logging
 import argparse
 from sys import platform
@@ -10,8 +12,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger("Robot-Man")
 
-import keyboard
-import time
 
 # import serial
 
@@ -61,7 +61,6 @@ def control():
 
 
 if __name__ == "__main__":
-
     logger.warning("Manual control started")
     control()
 else:
