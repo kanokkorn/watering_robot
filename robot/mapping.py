@@ -39,7 +39,8 @@ top_attraction_lats, top_attraction_lons = zip(
         (10.725940, 99.375502),
     ]
 )
-gmap.scatter(top_attraction_lats, top_attraction_lons, "#3B0B39", size=40, marker=False)
+gmap.scatter(top_attraction_lats, top_attraction_lons,
+             "#3B0B39", size=40, marker=False)
 
 # Marker
 hidden_gem_lat, hidden_gem_lon = 10.725359, 99.375334
