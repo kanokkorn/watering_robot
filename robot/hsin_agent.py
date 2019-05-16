@@ -14,6 +14,8 @@ gps_socket.connect()
 gps_socket.watch()
 
 # read csv files
+
+
 def track():
 
     # prefix parameter
@@ -121,4 +123,3 @@ if __name__ == "__main__":
         print("Serial_STOP")
         ser.write(str.encode("S"))
         raise Exception("Interrupt...Program terminated.")
-

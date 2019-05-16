@@ -19,4 +19,3 @@ if __name__ == "__main__":
         ser.write(str.encode("S"))
         print("Serial_STOP")
         raise Exception("Interrupt...Program terminated.")
-

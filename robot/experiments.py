@@ -17,6 +17,8 @@ gps_socket.connect()
 gps_socket.watch()
 
 # main function
+
+
 def main():
 
     # assign parameter for testing
@@ -139,7 +141,8 @@ def task(distance, count, in_lat, in_lon, lat_b, lon_b):
     os.system("clear")
     print("==== Checkpoint ", count, " start ====")
     time.sleep(0.2)
-    print("\nDistance offset: ", "{0:.4} meter".format(distance), "Status : Stop")
+    print("\nDistance offset: ", "{0:.4} meter".format(
+        distance), "Status : Stop")
     time.sleep(0.2)
     # print("Serial_STOP")
     time.sleep(0.2)
@@ -169,4 +172,3 @@ if __name__ == "__main__":
         # ser.write(str.encode('S'))
         raise Exception("Interrupt from keyboard...Program terminated.")
         exit()
-
