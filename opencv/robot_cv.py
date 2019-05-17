@@ -55,9 +55,43 @@ def classific():
     ret_a, img_a = camera_a.read()
     ret_b, img_b = camera_b.read()
 	flie_name_a = img_a
+    file_name_b = img_b
+    input_height = 299
+    input_width = 299 
+    input_mean = 128
+    input_std = 128
+    input_layer = "Mul"
+    output_layer = "final_result"
+
+    graph = load_graph(modelfile)
+    t_1 = read_tensor_from_image_file(file_name_a, input_height=input_height, input_width=input_width, input_mean=input_mean, input_std=input_std)
+    t_2 = read_tensor_from_image_file(file_name_b, input_height=input_height, input_width=input_width, input_mean=input_mean, input_std=input_std)
+
+    input_name = "import/" + input_layer
+    output_name = "import/" + output_layer
+    input_operate = graph.get_operation_by_name(input_name)
+    output_operate = graph.get_operation_by_name(output_name)
+
+    with tf.Session(graph=graph) as sess:
+        start = time.time()
+        result = sess.run(output_operate.output[0], {input_operate[0]: t})
+        end = time.time()
+    result = np.squeeze(result)
+
+    top_k =result.argsort()[-7:][::-1]
+    labels = load_labels(label_file)
+    f = open('analyze'+'.txt', 'w')
+    print('\nEvaluation time (1-image): {:.3f}s\n'.format(end-start))
+    localtime = time.asctime(time.localtime(time.time()))
+    f.write('========== \n'+str(localtime)+'\n========== \n')
+    for i in top_k:
+        f.write(str(labels[i]+'\t'))
+        f.write(str(results[i]*100)+' Percent')
+        f.write('\n')
+    f.close()
 
 if __name__ == "__main__":
     fruit_detect()
-    classific()
+    #classific()
     exit()
 
