@@ -82,7 +82,7 @@ def main():
                             print("lon N/A value")
                             in_lon = 99.378788
 
-                    distance = h_sin(
+                    distance = hsin(
                         in_lat, in_lon, lat_b, lon_b
                     )  # send value to haversine function
                     angle = angl(in_lat, in_lon, lat_b, lon_b)
@@ -109,7 +109,7 @@ def main():
 
 
 # calculate distance between 2 points
-def h_sin(in_lat, in_lon, lat_b, lon_b):
+def hsin(in_lat, in_lon, lat_b, lon_b):
     earth_radius = 6371e3
     lat_A = math.radians(in_lat)  # convert incoming latitude to rad
     lat_B = math.radians(lat_b)  # convert store latitude to rad
@@ -141,8 +141,7 @@ def task(distance, count, in_lat, in_lon, lat_b, lon_b):
     os.system("clear")
     print("==== Checkpoint ", count, " start ====")
     time.sleep(0.2)
-    print("\nDistance offset: ", "{0:.4} meter".format(
-        distance), "Status : Stop")
+    print("\nDistance offset: ", "{0:.4} meter".format(distance), "Status : Stop")
     time.sleep(0.2)
     # print("Serial_STOP")
     time.sleep(0.2)
