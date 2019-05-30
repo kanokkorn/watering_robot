@@ -1,4 +1,5 @@
 # Watering Bot (aka. SMART ROBOT v.1)
+[![CodeFactor](https://www.codefactor.io/repository/github/kanokkorn/marimo/badge)](https://www.codefactor.io/repository/github/kanokkorn/marimo)
 
 Main objective:
 
