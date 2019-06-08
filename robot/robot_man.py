@@ -4,20 +4,22 @@ import keyboard
 import logging
 import argparse
 from sys import platform
+import sys
+
+file_handler = logging.FileHandler(filename="./_robot_log_.log")
+sys_handler = logging.StreamHandler(sys.stdout)
+handlers = [file_handler, sys_handler]
 
 logging.basicConfig(
-    filename="./_robot_log_.log",
     level=logging.DEBUG,
-    format="[%(levelname)s]:[%(name)s]: %(message)s",
+    format="[%(asctime)s.%(msecs)03d]:[%(levelname)s]:[%(name)s]: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    handlers=handlers,
 )
 logger = logging.getLogger("Robot-Man")
 
 
 # import serial
-
-parser = argparse.ArgumentParser(description="Autonomous Robot")
-# parser.add_argument('--port', '-p', type=str, required=True, help='Arduino port that connect to RPi')
-# ser = serial.Serial( port, 9600)
 
 
 def control():
