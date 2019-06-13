@@ -14,21 +14,11 @@ handlers = [file_handler, sys_handler]
 
 logging.basicConfig(
     level=logging.DEBUG,
-    format="[%(asctime)s.%(msecs)03d %(levelname)s]:[%(name)s]: %(message)s",
+    format="[%(asctime)s.%(msecs)03d]:[%(levelname)s]:[%(name)s]: %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
     handlers=handlers,
 )
 logger = logging.getLogger("Robot-Auto")
-
-
-def arg_setup():
-    parser = argparse.ArgumentParser(description="Autonomous Robot Debuging CLI")
-    parser.add_argument(
-        "--gps", "-g", type=str, required=True, help="GPS file format .csv"
-    )
-    parser.add_argument(
-        "--port", "-p", type=str, required=True, help="Arduino port that connect to RPi"
-    )
 
 
 def platform_chk():
@@ -71,12 +61,13 @@ def test_and_carl():
 
 
 def initial():
+    b = [0, 100]
     for i in range(csv_line()):
         logger.info("Checkpoint " + str(i))
         logger.info(str(csv_read()[i][0]) + "," + str(csv_read()[i][1]))
         distance = 10
-        test_data_a = 10.712650
-        test_data_b = 99.378680
+        test_data_a = 10.712600
+        test_data_b = 99.378650
         while distance > 5:
             distance = hsin(
                 test_data_a,
@@ -84,11 +75,14 @@ def initial():
                 float(csv_read()[i][0]),
                 float(csv_read()[i][1]),
             )
-            print(distance)
+            print("{:0.2f} Meter".format(distance))
             test_data_a += 0.000005
             test_data_b += 0.000005
             time.sleep(0.05)
-        time.sleep(1)
+        b[0] = distance
+        compara(b[0], b[1])
+        b[1] = b[0]
+        time.sleep(0.5)
 
     pass
 
@@ -122,6 +116,16 @@ def hsin(input_lat, input_lon, lat_des, lon_des):
         print("No Value")
     return earth_radius * c
     pass
+
+
+def compara(x, y):
+    if x > y:
+        logger.warning("Distance is increasing ... Break engaged")
+        exit()
+    if x < y:
+        pass
+    if x == y:
+        pass
 
 
 if __name__ == "__main__":
