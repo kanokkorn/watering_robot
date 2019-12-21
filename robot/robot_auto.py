@@ -88,13 +88,13 @@ def initial():
 
 
 def csv_line():
-    file = open("./robot/test-file.csv")
+    file = open("./test-file.csv")
     numline = len(file.readlines())
     return numline
 
 
 def csv_read():
-    with open("./robot/test-file.csv", newline="") as pos_file:
+    with open("./test-file.csv", newline="") as pos_file:
         read = csv.reader(pos_file)
         gps_list = list(read)
         return gps_list
@@ -122,11 +122,6 @@ def compara(x, y):
     if x > y:
         logger.warning("Distance is increasing ... Break engaged")
         exit()
-    if x < y:
-        pass
-    if x == y:
-        pass
-
 
 if __name__ == "__main__":
 
