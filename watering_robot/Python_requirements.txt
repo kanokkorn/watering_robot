@@ -1,8 +1,0 @@
-pyserial
-tensorflow
-tensorflow-tensorboard
-numpy
-opencv-contrib-python
-opencv-python
-scipy
-oct2py
