@@ -5,7 +5,9 @@ import serial
 import math
 import sys
 
+# serial on Raspberry pi must be /dev/ttyUSB0 or /dev/ttyAMA0 
 # ser = serial.Serial('/dev/ttyUSB0', 9600)
+
 gps_socket = gps3.GPSDSocket()
 data_stream = gps3.DataStream()
 gps_socket.connect()
