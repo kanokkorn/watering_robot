@@ -1,42 +1,96 @@
-# Watering Bot (aka. SMART ROBOT v.1)
+# Watering Bot
+
 [![CodeFactor](https://www.codefactor.io/repository/github/kanokkorn/marimo/badge)](https://www.codefactor.io/repository/github/kanokkorn/marimo)
 
-Main objective:
+## Goal
 
-* Watering by following GPS marker
-* Palm tree analysis for find disease 
-* Loadcell
-* Measure soil & humidity
+This project is to demonstrate how autonomous agriculture should be in my dream. I know in reality it's hard but I am working for it.
 
-### Watering
+The crucial point of this robot aims to be is
 
-The robot can navigate autonomously point-by-point by GPS receiver and data from the onboard computer.
-The GPS point also can be edit in GUI and send to the robot via MQTT protocol.
+* Can operate __without__ __any__ human interaction
+* Work in __every__ __condition__, even if no internet connection
+* Smart enough to __decide__ what it should do when unexpect thing happened
+* Can be work independently or group, __without__ __reconfiguration__
+* __Easy__ to use interface
 
-### Palm tree analysis
+## How it works
 
-Capture pictures of oil palm leaf and detect Oil palm fruits using computer vision and deep learning to determined quality of palm fruit and leaf to prevent disease.<br>
-Picture example 1:
- > <img src="images/tf_palm.jpg" width="600">
-Picture example 2:
- > <img src="images/tf_palm_2.jpg" width="600">
+This flow will show how the system works
 
-### Loadcell
+```text
+                   +--------------+
+                   |              |
+                   | sensor suite |
+                   |              |
+                   +---+------+---+
+                       ^      |
+                       |      |
+                       |      v
++----------+       +---+------+---+       +-----------+
+|  control +<------+              +------>+           |
+|          |       | Robot Server |       | local sql |
+|   unit   +------>+              +<------+           |
++----------+       +---+------+---+       +-----------+
+                       ^      |
+                       |      |
+                       |      v
+                   +---+------+---+
+                   |              |
+                   |  interface   |
+                   |              |
+                   +--------------+
+```
 
-loadcell built-in with watering-robot
+The robot takes command from the user interface. Just set up one time. Then tell the robot what it should do, where it should go. The robot will take care of the rest of the tasks. Tasks can be repetitive. It depends on what you do.
 
-### Measure soil & humidity
+When a command is sent. The robot will execute the command. In this case, the robot is programmed to follow waypoint from GPS coordinates and watering plants.
 
-Measure soil humidity, temperature, and air humidity. Collect the data from the robot and send to Firebase for further analysis.  
+### Interface
+
+The interface is written with HTML and host on the robot server. So you don't have to install anything on the computer.
+
+### Control unit
+
+The Control unit is how the robot moves through the terrain and such. It designed to be modular for a different type of platform like 4WD, track, legs, etc.
+
+### Local SQL
+
+The robot stores data locally and can exchange with other robots and servers if needed.
+
+### Sensor suite
+
+The sensor suite is where the robot sees and commutes with other robots, basically contain a camera, Narrowband transmitter, gyroscope, and ultrasonic.
+
+### Robot server
+
+The robot server is the core of this project. The server computes PID, path planning, analyze an image from the camera, and decision making. With some machine learning and deep learning tricks.
+
+## Screenshot
+
+Example 1: Detecting palm fruits
+
+![Example_1](./images/screenshot_1.jpg)
+
+![Example_2](./images/screenshot_2.jpg)
+
+## Install
+
+This project designed to work with ARMv7 based processor, if you use x86_64 or ARM64 some modules need to recompile.
+
+### Prerequisite
+
+* Micro SD Card (16GB+ is recommend)
+
+* [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) without Desktop Environment (Desktop Environment is ok if you don't like using a terminal.)
+
+* Arduino Uno R3
+
+* USB Camera (For now. We planned to use the CSI type camera.)
 
 ## Usage
 
-Clone this repository and run ```sudo ./install.sh``` the program will start and install and update all requires packages. Make sure you have all the packages installed.<br>
-After that run ```sudo ./robot.sh``` program will ask you how to control the robot.
-
-## Changing GPS lat, lon 
-
-Type ```nano robot/lat_lon.csv``` and edit the point. The format of data will look like this. ``` 45.155452, 14.475854```
+TBD
 
 ## License
 
