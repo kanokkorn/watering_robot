@@ -10,7 +10,7 @@ The crucial point of this robot aims to be is
 
 * Can operate __without__ __any__ human interaction
 * Work in __every__ __condition__, even if no internet connection
-* Smart enough to __decide__ what it should do when unexpect thing happened
+* Smart enough to __decide__ what it should do when an unexpected thing happened
 * Can be work independently or group, __without__ __reconfiguration__
 * __Easy__ to use interface
 
