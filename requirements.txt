@@ -1,0 +1,5 @@
+pyserial
+numpy
+flask
+gps3
+keyboard
