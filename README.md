@@ -1,6 +1,6 @@
 # Watering Bot
 
-[![CodeFactor](https://www.codefactor.io/repository/github/kanokkorn/marimo/badge)](https://www.codefactor.io/repository/github/kanokkorn/marimo)
+[![CodeFactor](https://www.codefactor.io/repository/github/kanokkorn/watering_robot/badge)](https://www.codefactor.io/repository/github/kanokkorn/watering_robot)
 
 ## Goal
 
